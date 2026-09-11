@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>IE-FEST 2026 | Incsada English Festival</title>
+    <meta name="description" content="Incsada English Festival - Where Every Voice Becomes a Star in the Cosmic Sea.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#18205C',
+                        amethyst: '#9966CC',
+                        periwinkle: '#9FA8DA',
+                        vanilla: '#F7E7B2',
+                        honeydew: '#E8F5E9',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'cosmic-gradient': 'linear-gradient(180deg, #10153D 0%, #18205C 50%, #0d133b 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ==========================================================================
+           CORE STYLES & VARIABLES
+           ========================================================================== */
+        :root {
+            --color-deep: #18205C;
+            --color-amethyst: #9966CC;
+            --color-periwinkle: #9FA8DA;
+            --color-vanilla: #F7E7B2;
+            --color-honeydew: #E8F5E9;
+        }
+
+        body {
+            background-color: #0b0f29;
+            color: var(--color-honeydew);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Scrollbars */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0b0f29; }
+        ::-webkit-scrollbar-thumb { background: rgba(153, 102, 204, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-periwinkle); }
+
+        /* ==========================================================================
+           GLASSMORPHISM & UI COMPONENTS
+           ========================================================================== */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(159, 168, 218, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(159, 168, 218, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(153, 102, 204, 0.5);
+            box-shadow: 0 20px 40px rgba(153, 102, 204, 0.2), inset 0 1px 2px rgba(247, 231, 178, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-nav {
+            background: rgba(11, 15, 41, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(159, 168, 218, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        /* ==========================================================================
+           GLOWS & TYPOGRAPHY
+           ========================================================================== */
+        .text-glow-vanilla { text-shadow: 0 0 15px rgba(247, 231, 178, 0.8), 0 0 30px rgba(247, 231, 178, 0.4); }
+        .text-glow-periwinkle { text-shadow: 0 0 15px rgba(159, 168, 218, 0.8), 0 0 30px rgba(159, 168, 218, 0.4); }
+        .heading-glow { text-shadow: 0 0 30px rgba(159, 168, 218, 0.4), 0 0 60px rgba(153, 102, 204, 0.3); }
+
+        .title-reveal {
+            background: linear-gradient(to right, var(--color-honeydew), var(--color-vanilla), var(--color-periwinkle));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shine 6s linear infinite;
+        }
+
+        /* ==========================================================================
+           BUTTONS
+           ========================================================================== */
+        .btn-celestial {
+            background: linear-gradient(135deg, rgba(153,102,204,0.2) 0%, rgba(159,168,218,0.2) 100%);
+            border: 1px solid rgba(159,168,218,0.4);
+            color: var(--color-vanilla);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 0 20px rgba(153, 102, 204, 0.2);
+            z-index: 1;
+        }
+
+        .btn-celestial::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(247, 231, 178, 0.3), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+
+        .btn-celestial:hover {
+            box-shadow: 0 0 30px rgba(153, 102, 204, 0.5), 0 0 15px rgba(247, 231, 178, 0.4);
+            background: rgba(153, 102, 204, 0.4);
+            border-color: var(--color-vanilla);
+            transform: translateY(-3px);
+            color: #fff;
+        }
+
+        .btn-celestial:hover::before { left: 100%; }
+
+        /* ==========================================================================
+           INTERACTIVE DOODLES
+           ========================================================================== */
+        .interactive-doodle {
+            position: fixed;
+            cursor: grab;
+            z-index: 30;
+            will-change: transform, left, top;
+            touch-action: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            filter: drop-shadow(0 0 10px rgba(153, 102, 204, 0.4));
+            transition: filter 0.3s ease, transform 0.1s ease;
+        }
+        
+        .interactive-doodle:active {
+            cursor: grabbing;
+            filter: drop-shadow(0 0 25px rgba(247, 231, 178, 0.8));
+            z-index: 100;
+        }
+
+        /* ==========================================================================
+           ANIMATIONS & UTILITIES
+           ========================================================================== */
+        @keyframes shine { to { background-position: 200% center; } }
+        @keyframes pulse-slow { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.05); } }
+        @keyframes float-subtle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .animate-pulse-slow { animation: pulse-slow 8s ease-in-out infinite; }
+        .animate-float { animation: float-subtle 6s ease-in-out infinite; }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .orbit-ring {
+            position: absolute;
+            border: 1px dashed rgba(159, 168, 218, 0.2);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hidden-gallery-item { display: none !important; }
+    </style>
+</head>
+<body class="antialiased relative selection:bg-periwinkle selection:text-deep bg-cosmic-gradient">
+
+    <!-- ==========================================================================
+         BACKGROUND LAYERS & CANVAS
+         ========================================================================== -->
+    <div id="parallax-bg" class="fixed inset-0 pointer-events-none -z-20 overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-amethyst/20 rounded-full blur-[120px] animate-pulse-slow mix-blend-screen" data-speed="0.02"></div>
+        <div class="absolute bottom-[10%] right-[-10%] w-[50vw] h-[50vw] bg-periwinkle/15 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen" style="animation-delay: -4s;" data-speed="0.03"></div>
+        <div class="absolute top-[40%] left-[20%] w-[40vw] h-[40vw] bg-deep/50 rounded-full blur-[80px]" data-speed="0.01"></div>
+        <div class="orbit-ring w-[150vw] h-[150vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30" data-speed="0.015"></div>
+        <div class="orbit-ring w-[100vw] h-[100vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 border-amethyst/30" data-speed="0.025"></div>
+    </div>
+
+    <canvas id="constellation-canvas" class="fixed inset-0 -z-10 pointer-events-auto opacity-90"></canvas>
+    <div id="doodle-container" class="fixed inset-0 pointer-events-none z-30"></div>
+
+    <!-- ==========================================================================
+         NAVIGATION
+         ========================================================================== -->
+    <nav id="navbar" class="fixed w-full z-50 py-4 glass-nav" style="padding-top: max(1rem, env(safe-area-inset-top));">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="relative">
+                    <span class="text-vanilla text-2xl group-hover:rotate-180 transition-transform duration-700 inline-block text-glow-vanilla">✦</span>
+                    <span class="absolute inset-0 text-periwinkle text-2xl animate-ping opacity-0 group-hover:opacity-100">✦</span>
+                </div>
+                <span class="font-display font-bold text-lg sm:text-xl tracking-widest text-honeydew group-hover:text-white transition-colors">IE-FEST</span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-7 text-xs lg:text-sm font-medium tracking-widest">
+                <a href="#about" class="text-honeydew/80 hover:text-vanilla transition-all hover:text-glow-vanilla">ABOUT</a>
+                <a href="#competitions" class="text-honeydew/80 hover:text-vanilla transition-all hover:text-glow-vanilla">COMPETITIONS</a>
+                <a href="#quiz" class="text-honeydew/80 hover:text-vanilla transition-all hover:text-glow-vanilla">STAR QUIZ</a>
+                <a href="#guidebook" class="text-honeydew/80 hover:text-vanilla transition-all hover:text-glow-vanilla">GUIDE</a>
+                <a href="#faq" class="text-honeydew/80 hover:text-vanilla transition-all hover:text-glow-vanilla">FAQ</a>
+                <a href="#gallery" class="text-honeydew/80 hover:text-vanilla transition-all hover:text-glow-vanilla">GALLERY</a>
+                <button onclick="openRegisterModal()" class="btn-celestial px-5 py-2 rounded-full font-bold">JOIN NOW</button>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-honeydew hover:text-vanilla p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full glass-panel flex flex-col p-4 shadow-2xl border-t-0">
+            <a href="#about" class="text-honeydew hover:text-vanilla px-4 py-3 text-sm font-medium tracking-widest">ABOUT</a>
+            <a href="#competitions" class="text-honeydew hover:text-vanilla px-4 py-3 text-sm font-medium tracking-widest">COMPETITIONS</a>
+            <a href="#quiz" class="text-honeydew hover:text-vanilla px-4 py-3 text-sm font-medium tracking-widest">STAR QUIZ</a>
+            <a href="#guidebook" class="text-honeydew hover:text-vanilla px-4 py-3 text-sm font-medium tracking-widest">GUIDE</a>
+            <a href="#faq" class="text-honeydew hover:text-vanilla px-4 py-3 text-sm font-medium tracking-widest">FAQ</a>
+            <a href="#gallery" class="text-honeydew hover:text-vanilla px-4 py-3 text-sm font-medium tracking-widest">GALLERY</a>
+            <button onclick="openRegisterModal()" class="text-vanilla px-4 py-3 text-sm font-bold tracking-widest border-t border-white/10 mt-2 pt-4 text-left">JOIN NOW ✦</button>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+         HERO SECTION WITH COUNTDOWN
+         ========================================================================== -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-20 px-4 sm:px-6 z-10">
+        <div class="text-center max-w-5xl mx-auto flex flex-col items-center" data-speed="0.05">
+            <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full glass-panel border border-vanilla/30 text-vanilla text-xs sm:text-sm font-semibold tracking-[0.2em] mb-6 animate-float uppercase shadow-[0_0_20px_rgba(247,231,178,0.2)]">
+                <span class="w-2 h-2 rounded-full bg-vanilla animate-pulse"></span>
+                Enter the Cosmic Sea
+            </div>
+            
+            <h1 class="font-display text-[clamp(3.5rem,12vw,8rem)] leading-none font-bold mb-4 tracking-tighter title-reveal heading-glow">
+                IE-FEST
+            </h1>
+            <p class="text-[clamp(1.2rem,4vw,2rem)] text-periwinkle/90 font-light mb-8 tracking-[0.15em] uppercase">
+                Incsada English Festival 2026
+            </p>
+            
+            <!-- Live Countdown Clock -->
+            <div id="countdown-container" class="grid grid-cols-4 gap-3 sm:gap-6 max-w-lg w-full mb-10">
+                <div class="glass-panel p-3 sm:p-4 rounded-2xl flex flex-col items-center border border-periwinkle/20">
+                    <span id="days" class="font-display text-2xl sm:text-4xl font-bold text-vanilla">00</span>
+                    <span class="text-[10px] sm:text-xs text-periwinkle tracking-widest uppercase mt-1">Days</span>
+                </div>
+                <div class="glass-panel p-3 sm:p-4 rounded-2xl flex flex-col items-center border border-periwinkle/20">
+                    <span id="hours" class="font-display text-2xl sm:text-4xl font-bold text-vanilla">00</span>
+                    <span class="text-[10px] sm:text-xs text-periwinkle tracking-widest uppercase mt-1">Hours</span>
+                </div>
+                <div class="glass-panel p-3 sm:p-4 rounded-2xl flex flex-col items-center border border-periwinkle/20">
+                    <span id="minutes" class="font-display text-2xl sm:text-4xl font-bold text-vanilla">00</span>
+                    <span class="text-[10px] sm:text-xs text-periwinkle tracking-widest uppercase mt-1">Mins</span>
+                </div>
+                <div class="glass-panel p-3 sm:p-4 rounded-2xl flex flex-col items-center border border-periwinkle/20">
+                    <span id="seconds" class="font-display text-2xl sm:text-4xl font-bold text-vanilla">00</span>
+                    <span class="text-[10px] sm:text-xs text-periwinkle tracking-widest uppercase mt-1">Secs</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-5 w-full max-w-md mx-auto relative z-20">
+                <button onclick="openRegisterModal()" class="btn-celestial py-4 px-8 rounded-full font-bold tracking-widest flex-1 flex items-center justify-center gap-3">
+                    REGISTER NOW
+                </button>
+                <a href="#guidebook" class="py-4 px-8 rounded-full font-semibold tracking-widest flex-1 border border-periwinkle/30 bg-white/5 hover:bg-white/10 transition-all text-honeydew hover:text-white flex items-center justify-center">
+                    GUIDE BOOK
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT SECTION
+         ========================================================================== -->
+    <section id="about" class="py-24 relative px-4 sm:px-6 z-10">
+        <div class="max-w-7xl mx-auto reveal-on-scroll">
+            <div class="text-center mb-16">
+                <span class="text-vanilla text-xs font-bold tracking-[0.2em] block mb-3 uppercase">Discover the Depth</span>
+                <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] font-bold text-white mb-6 heading-glow leading-tight">The Cosmic Sea of Voices</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 glass-card p-8 sm:p-12 rounded-[2rem] relative overflow-hidden">
+                    <div class="absolute -right-20 -top-20 text-[200px] text-white opacity-5 pointer-events-none rotate-12">✧</div>
+                    <h3 class="text-2xl sm:text-3xl font-display text-vanilla mb-6 font-semibold tracking-wide">About IE-FEST</h3>
+                    <p class="text-honeydew/80 leading-relaxed mb-6 text-base sm:text-lg font-light">
+                        Incsada English Festival (IE-FEST) is a premier English competition designed to connect bright minds in an immersive environment. Imagine a vast ocean where every drop is a star; we bring together participants to form a beautiful constellation of talents.
+                    </p>
+                    <p class="text-honeydew/80 leading-relaxed text-base sm:text-lg font-light">
+                        Whether you are navigating the depths of an Olympiad or riding the waves of a Storytelling performance, your voice adds a unique glow to our universe.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-5 flex flex-col gap-6 relative">
+                    <div class="absolute left-6 top-6 bottom-6 w-px bg-gradient-to-b from-amethyst via-periwinkle to-transparent opacity-30"></div>
+                    
+                    <div class="glass-card p-6 rounded-2xl ml-12 relative group hover:border-vanilla/50 transition-colors">
+                        <div class="absolute -left-[3.25rem] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-deep border-2 border-vanilla group-hover:bg-vanilla group-hover:shadow-[0_0_15px_#F7E7B2] transition-all"></div>
+                        <span class="text-vanilla font-bold text-xs tracking-widest block mb-2">PHASE 1</span>
+                        <h4 class="text-lg font-display text-white mb-2 font-semibold">Registration</h4>
+                        <p class="text-sm text-honeydew/60">Secure your spot in the cosmic ocean.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl ml-12 relative group hover:border-amethyst/50 transition-colors">
+                        <div class="absolute -left-[3.25rem] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-deep border-2 border-amethyst group-hover:bg-amethyst group-hover:shadow-[0_0_15px_#9966CC] transition-all"></div>
+                        <span class="text-amethyst font-bold text-xs tracking-widest block mb-2">PHASE 2</span>
+                        <h4 class="text-lg font-display text-white mb-2 font-semibold">The Main Event</h4>
+                        <p class="text-sm text-honeydew/60">The day stars gather and shine.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         COMPETITIONS SECTION
+         ========================================================================== -->
+    <section id="competitions" class="py-24 relative px-4 sm:px-6 z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <span class="text-periwinkle text-xs font-bold tracking-[0.2em] block mb-3 uppercase">Six Stars of IE-FEST</span>
+                <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] font-bold text-white mb-6 heading-glow leading-tight">Competitions</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="glass-card p-8 rounded-[2rem] group relative overflow-hidden reveal-on-scroll">
+                    <div class="absolute inset-0 bg-gradient-to-br from-periwinkle/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="text-4xl group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300">📝</div>
+                            <span class="py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-vanilla font-bold tracking-wider">SD</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-vanilla transition-colors">Olympiad</h3>
+                        <p class="text-honeydew/60 text-sm font-light leading-relaxed">Dive deep into fundamental English knowledge. Test your academic mettle in grammar and comprehension.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-[2rem] group relative overflow-hidden reveal-on-scroll" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-periwinkle/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="text-4xl group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300">🧠</div>
+                            <span class="py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-vanilla font-bold tracking-wider">SMP</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-vanilla transition-colors">Olympiad</h3>
+                        <p class="text-honeydew/60 text-sm font-light leading-relaxed">Challenge your advanced linguistics. A rigorous test of structure, vocabulary, and critical reading.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-[2rem] group relative overflow-hidden reveal-on-scroll" style="transition-delay: 200ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amethyst/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="text-4xl group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300">📖</div>
+                            <span class="py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-vanilla font-bold tracking-wider">SD</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-amethyst transition-colors">Storytelling</h3>
+                        <p class="text-honeydew/60 text-sm font-light leading-relaxed">Flow like water with your narrative. Captivate the audience with imaginative and creative expression.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-[2rem] group relative overflow-hidden reveal-on-scroll">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amethyst/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="text-4xl group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300">🎭</div>
+                            <span class="py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-vanilla font-bold tracking-wider">SMP</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-amethyst transition-colors">Storytelling</h3>
+                        <p class="text-honeydew/60 text-sm font-light leading-relaxed">Bring characters to life. Deliver compelling tales with perfect pronunciation and stage presence.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-[2rem] group relative overflow-hidden reveal-on-scroll" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-vanilla/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="text-4xl group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300">🎙️</div>
+                            <span class="py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-vanilla font-bold tracking-wider">SMP</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-vanilla transition-colors">Speech</h3>
+                        <p class="text-honeydew/60 text-sm font-light leading-relaxed">Make a splash! Articulate your thoughts, inspire the crowd, and persuade the judges.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-[2rem] group relative overflow-hidden reveal-on-scroll" style="transition-delay: 200ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-vanilla/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="text-4xl group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300">🐝</div>
+                            <span class="py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-vanilla font-bold tracking-wider">SMP</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-vanilla transition-colors">Spelling Bee</h3>
+                        <p class="text-honeydew/60 text-sm font-light leading-relaxed">Precision under pressure. Master complex vocabulary and spell your way to the top of the constellation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE MINI-GAME: STAR TRIVIA QUIZ
+         ========================================================================== -->
+    <section id="quiz" class="py-24 relative px-4 sm:px-6 z-10">
+        <div class="max-w-3xl mx-auto reveal-on-scroll">
+            <div class="glass-card rounded-[2.5rem] p-8 sm:p-12 relative overflow-hidden border border-amethyst/40">
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-amethyst/20 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="text-center mb-8">
+                    <span class="text-vanilla text-xs font-bold tracking-[0.2em] block mb-2 uppercase">Interactive Challenge</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-2">Find Your Star Persona</h2>
+                    <p class="text-honeydew/70 text-sm">Answer 3 quick questions to discover which IE-FEST competition suits you best!</p>
+                </div>
+
+                <div id="quiz-container">
+                    <div id="quiz-question-box">
+                        <div class="flex justify-between text-xs text-periwinkle mb-4 font-semibold tracking-wider">
+                            <span id="quiz-step">QUESTION 1 OF 3</span>
+                            <span id="quiz-progress-text">33%</span>
+                        </div>
+                        <h3 id="quiz-question" class="text-xl font-display text-vanilla font-semibold mb-6">What is your favorite way to express yourself?</h3>
+                        <div id="quiz-options" class="grid gap-4">
+                            <!-- Injected via JS -->
+                        </div>
+                    </div>
+
+                    <div id="quiz-result-box" class="hidden text-center py-6">
+                        <div class="text-5xl mb-4">🌟</div>
+                        <span class="text-xs text-periwinkle font-bold tracking-widest uppercase block mb-2">Your Recommended Constellation</span>
+                        <h3 id="quiz-result-title" class="text-3xl font-display font-bold text-vanilla mb-4">Storytelling Star</h3>
+                        <p id="quiz-result-desc" class="text-honeydew/80 text-sm max-w-md mx-auto mb-8 font-light leading-relaxed">You possess an imaginative soul that captivates listeners with marvelous tales and emotional depth.</p>
+                        <button onclick="resetQuiz()" class="btn-celestial py-3 px-8 rounded-full font-bold text-xs tracking-widest">RETAKE QUIZ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         GUIDE BOOK SECTION
+         ========================================================================== -->
+    <section id="guidebook" class="py-24 relative px-4 sm:px-6 z-10">
+        <div class="max-w-5xl mx-auto reveal-on-scroll">
+            <div class="glass-card rounded-[2.5rem] p-8 md:p-14 relative overflow-hidden border-t-2 border-t-periwinkle/50">
+                <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 80% 20%, var(--color-amethyst) 0%, transparent 40%);"></div>
+
+                <div class="grid md:grid-cols-2 gap-10 items-center relative z-10">
+                    <div class="order-2 md:order-1 relative group mx-auto w-full max-w-sm">
+                        <div class="aspect-[3/4] rounded-xl bg-gradient-to-br from-deep to-[#0b0f29] border border-white/10 shadow-2xl p-6 flex flex-col justify-center items-center text-center relative">
+                            <span class="text-vanilla text-4xl mb-4 text-glow-vanilla">✦</span>
+                            <h4 class="font-display font-bold text-xl text-white tracking-widest mb-2">IE-FEST 2026</h4>
+                            <p class="text-periwinkle text-xs tracking-[0.3em] uppercase mb-6 border-b border-white/10 pb-4 w-full">Guide Book</p>
+                            <p class="text-[10px] text-honeydew/50">Official Rules & Regulations</p>
+                        </div>
+                    </div>
+                    
+                    <div class="order-1 md:order-2 text-center md:text-left">
+                        <span class="text-periwinkle text-xs font-bold tracking-[0.2em] block mb-3 uppercase">The Cosmic Map</span>
+                        <h2 class="font-display text-[clamp(2rem,5vw,3rem)] leading-tight font-bold text-white mb-6">Navigate the <br><span class="text-periwinkle text-glow-periwinkle">Constellation</span></h2>
+                        <p class="text-honeydew/70 text-base mb-8 font-light leading-relaxed">
+                            Everything you need to know about timelines, rules, judging criteria, and technical requirements is written in the stars. Download the official guidebook to prepare for your journey.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a id="btn-guide-view" href="#" target="_blank" class="btn-celestial py-3 px-8 rounded-full font-bold text-sm text-center">VIEW GUIDE</a>
+                            <a id="btn-guide-download" href="#" download class="py-3 px-8 rounded-full font-bold text-sm text-center border border-white/20 hover:bg-white/10 transition-colors">DOWNLOAD PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         FAQ ACCORDION SECTION
+         ========================================================================== -->
+    <section id="faq" class="py-24 relative px-4 sm:px-6 z-10">
+        <div class="max-w-4xl mx-auto reveal-on-scroll">
+            <div class="text-center mb-16">
+                <span class="text-vanilla text-xs font-bold tracking-[0.2em] block mb-3 uppercase">Got Questions?</span>
+                <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] font-bold text-white mb-6 heading-glow leading-tight">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <button class="faq-toggle w-full p-6 text-left flex justify-between items-center font-display font-bold text-white hover:text-vanilla transition-colors">
+                        <span>Who is eligible to participate in IE-FEST 2026?</span>
+                        <span class="text-vanilla text-xl transition-transform duration-300">＋</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-sm text-honeydew/70 font-light leading-relaxed border-t border-white/5 pt-4">
+                        IE-FEST is open to all elementary school students (SD) and junior high school students (SMP) across the region depending on the specific competition category. Check the guidebook for detailed school grade brackets.
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <button class="faq-toggle w-full p-6 text-left flex justify-between items-center font-display font-bold text-white hover:text-vanilla transition-colors">
+                        <span>How do I submit my speech or storytelling video?</span>
+                        <span class="text-vanilla text-xl transition-transform duration-300">＋</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-sm text-honeydew/70 font-light leading-relaxed border-t border-white/5 pt-4">
+                        You can upload your performance video to Google Drive or YouTube, ensure link permissions are public, and submit via the designated submission links on our website or registration portal.
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <button class="faq-toggle w-full p-6 text-left flex justify-between items-center font-display font-bold text-white hover:text-vanilla transition-colors">
+                        <span>Is there a registration fee?</span>
+                        <span class="text-vanilla text-xl transition-transform duration-300">＋</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-sm text-honeydew/70 font-light leading-relaxed border-t border-white/5 pt-4">
+                        Yes, a nominal registration fee applies per participant/team depending on the competition category. All fee details and payment methods are specified in the official guidebook.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         GALLERY SECTION
+         ========================================================================== -->
+    <section id="gallery" class="py-24 relative px-4 sm:px-6 z-10">
+        <div class="max-w-7xl mx-auto reveal-on-scroll">
+            <div class="text-center mb-12">
+                <span class="text-amethyst text-xs font-bold tracking-[0.2em] block mb-3 uppercase">Visual Archives</span>
+                <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] font-bold text-white mb-6 heading-glow leading-tight">Memories</h2>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
+                <button class="filter-btn active bg-white/20 text-white shadow-lg px-4 py-2 rounded-full text-xs font-bold tracking-wider transition-all" data-filter="all">ALL</button>
+                <button class="filter-btn bg-white/5 text-honeydew/70 hover:bg-white/10 px-4 py-2 rounded-full text-xs font-bold tracking-wider transition-all" data-filter="event">EVENT</button>
+                <button class="filter-btn bg-white/5 text-honeydew/70 hover:bg-white/10 px-4 py-2 rounded-full text-xs font-bold tracking-wider transition-all" data-filter="committee">COMMITTEE</button>
+                <button class="filter-btn bg-white/5 text-honeydew/70 hover:bg-white/10 px-4 py-2 rounded-full text-xs font-bold tracking-wider transition-all" data-filter="competition">COMPETITIONS</button>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]">
+                <div class="gallery-item group relative rounded-2xl overflow-hidden cursor-pointer" data-category="event">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop" alt="Event Crowd" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-xs font-bold tracking-widest">OPENING CEREMONY</span>
+                    </div>
+                </div>
+                <div class="gallery-item group relative rounded-2xl overflow-hidden cursor-pointer col-span-2 row-span-2" data-category="competition">
+                    <img src="https://images.unsplash.com/photo-1475721025871-870590623097?q=80&w=1200&auto=format&fit=crop" alt="Speech Competition" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <span class="text-white text-sm font-bold tracking-widest">SPEECH FINALS</span>
+                    </div>
+                </div>
+                <div class="gallery-item group relative rounded-2xl overflow-hidden cursor-pointer" data-category="committee">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800&auto=format&fit=crop" alt="Committee" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-xs font-bold tracking-widest">CREW</span>
+                    </div>
+                </div>
+                <div class="gallery-item group relative rounded-2xl overflow-hidden cursor-pointer" data-category="competition">
+                    <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?q=80&w=800&auto=format&fit=crop" alt="Storytelling" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-xs font-bold tracking-widest">STORYTELLING</span>
+                    </div>
+                </div>
+                <div class="gallery-item group relative rounded-2xl overflow-hidden cursor-pointer" data-category="event">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop" alt="Venue" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-xs font-bold tracking-widest">VENUE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[100] hidden flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <div id="lightbox-bg" class="absolute inset-0 bg-deep/95 backdrop-blur-md cursor-pointer"></div>
+        <button id="lightbox-close" class="absolute top-6 right-6 text-white/50 hover:text-white p-2 z-10 transition-colors">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <img id="lightbox-img" src="" alt="Expanded Memory" class="relative z-10 max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300">
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="register-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-deep/90 backdrop-blur-md" onclick="closeRegisterModal()"></div>
+        <div class="glass-card rounded-[2rem] p-8 max-w-md w-full relative z-10 border border-vanilla/30 text-center shadow-2xl">
+            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-honeydew/60 hover:text-white">✕</button>
+            <div class="text-4xl mb-4">✦</div>
+            <h3 class="font-display font-bold text-2xl text-white mb-2">Join IE-FEST 2026</h3>
+            <p class="text-xs text-honeydew/70 mb-6">Scan the QR code or click below to proceed to our secure registration portal.</p>
+            <div class="bg-white p-3 rounded-2xl inline-block mb-6 shadow-xl">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://register.iefest.com&color=18205C&bgcolor=F7E7B2" alt="QR Code" class="w-40 h-40 object-cover rounded-xl">
+            </div>
+            <a id="modal-reg-link" href="https://register.iefest.com" target="_blank" class="btn-celestial block py-3 px-6 rounded-full font-bold text-sm tracking-wider">OPEN REGISTRATION PORTAL ↗</a>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         FOOTER
+         ========================================================================== -->
+    <footer class="bg-[#060919] border-t border-white/5 pt-20 pb-10 relative z-10 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16">
+                <div class="md:col-span-5">
+                    <a href="#home" class="inline-block mb-4">
+                        <h2 class="font-display text-3xl font-bold text-white tracking-widest">IE-FEST <span class="text-vanilla">✦</span></h2>
+                    </a>
+                    <p class="text-periwinkle text-sm mb-6 uppercase tracking-widest">Incsada English Festival</p>
+                    <p class="text-honeydew/50 text-sm max-w-sm leading-relaxed font-light">
+                        "Different voices. One cosmic sea."<br><br>
+                        Connecting talents and celebrating English proficiency in a spectacular event.
+                    </p>
+                </div>
+                
+                <div class="md:col-span-3 md:col-start-7">
+                    <h3 class="text-white font-bold mb-6 tracking-widest text-xs uppercase border-b border-white/10 pb-4">Explore</h3>
+                    <ul class="space-y-4 text-sm text-honeydew/60">
+                        <li><a href="#about" class="hover:text-vanilla transition-colors block">About</a></li>
+                        <li><a href="#competitions" class="hover:text-vanilla transition-colors block">Competitions</a></li>
+                        <li><a href="#quiz" class="hover:text-vanilla transition-colors block">Star Quiz</a></li>
+                        <li><a href="#guidebook" class="hover:text-vanilla transition-colors block">Guide Book</a></li>
+                        <li><a href="#faq" class="hover:text-vanilla transition-colors block">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="md:col-span-3">
+                    <h3 class="text-white font-bold mb-6 tracking-widest text-xs uppercase border-b border-white/10 pb-4">Contact</h3>
+                    <ul class="space-y-4 text-sm text-honeydew/60">
+                        <li class="flex items-center gap-3"><span class="text-vanilla">📍</span> Mojokerto, East Java</li>
+                        <li class="flex items-center gap-3"><span class="text-vanilla">✉️</span> contact@iefest.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-honeydew/30">&copy; <span id="year">2026</span> IE-FEST. All rights reserved.</p>
+                <p class="text-xs text-honeydew/30">Designed with ✦ for the Cosmic Sea.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         SCRIPTS
+         ========================================================================== -->
+    <script>
+        const eventConfig = {
+            date: "OCT 24 - 26, 2026",
+            targetTimestamp: new Date("October 24, 2026 08:00:00").getTime(),
+            location: "MOJOKERTO, ID",
+            registrationUrl: "https://register.iefest.com",
+            guidebookPath: "assets/docs/guidebook.pdf"
+        };
+
+        // Modal triggers
+        function openRegisterModal() {
+            document.getElementById('register-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeRegisterModal() {
+            document.getElementById('register-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Live Countdown Timer
+        function initCountdown() {
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minsEl = document.getElementById('minutes');
+            const secsEl = document.getElementById('seconds');
+            if (!daysEl) return;
+
+            function update() {
+                const now = new Date().getTime();
+                const distance = eventConfig.targetTimestamp - now;
+                if (distance < 0) return;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                daysEl.textContent = String(days).padStart(2, '0');
+                hoursEl.textContent = String(hours).padStart(2, '0');
+                minsEl.textContent = String(minutes).padStart(2, '0');
+                secsEl.textContent = String(seconds).padStart(2, '0');
+            }
+            update();
+            setInterval(update, 1000);
+        }
+
+        // Quiz State & Logic
+        const quizData = [
+            {
+                question: "What is your favorite way to express yourself?",
+                options: [
+                    { text: "Solving complex grammar & logic puzzles", category: "Olympiad" },
+                    { text: "Narrating magical and captivating stories", category: "Storytelling" },
+                    { text: "Delivering powerful speeches to a crowd", category: "Speech" },
+                    { text: "Mastering spelling under pressure", category: "Spelling Bee" }
+                ]
+            },
+            {
+                question: "Which superpower would you choose in the cosmic ocean?",
+                options: [
+                    { text: "Instant encyclopedic vocabulary knowledge", category: "Olympiad" },
+                    { text: "The power to bring characters vividly to life", category: "Storytelling" },
+                    { text: "A voice that echoes across galaxies", category: "Speech" },
+                    { text: "Lightning-fast mental articulation", category: "Spelling Bee" }
+                ]
+            },
+            {
+                question: "How do you handle high-pressure moments?",
+                options: [
+                    { text: "Calmly analyze the data step by step", category: "Olympiad" },
+                    { text: "Improvise with charm and creativity", category: "Storytelling" },
+                    { text: "Stand tall and speak with absolute confidence", category: "Speech" },
+                    { text: "Focus intensely on precision and accuracy", category: "Spelling Bee" }
+                ]
+            }
+        ];
+
+        let currentQuizStep = 0;
+        let userAnswers = {};
+
+        function initQuiz() {
+            renderQuizQuestion();
+        }
+
+        function renderQuizQuestion() {
+            const qBox = document.getElementById('quiz-question');
+            const optsBox = document.getElementById('quiz-options');
+            const stepEl = document.getElementById('quiz-step');
+            const progressEl = document.getElementById('quiz-progress-text');
+            
+            if (!qBox) return;
+
+            const current = quizData[currentQuizStep];
+            stepEl.textContent = `QUESTION ${currentQuizStep + 1} OF ${quizData.length}`;
+            progressEl.textContent = `${Math.round(((currentQuizStep + 1) / quizData.length) * 100)}%`;
+            qBox.textContent = current.question;
+
+            optsBox.innerHTML = '';
+            current.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'glass-panel p-4 rounded-xl text-left text-honeydew hover:text-vanilla hover:border-vanilla/50 transition-all text-sm font-medium flex items-center justify-between group';
+                btn.innerHTML = `<span>${opt.text}</span> <span class="text-periwinkle group-hover:translate-x-1 transition-transform">→</span>`;
+                btn.onclick = () => handleQuizAnswer(opt.category);
+                optsBox.appendChild(btn);
+            });
+        }
+
+        function handleQuizAnswer(category) {
+            userAnswers[category] = (userAnswers[category] || 0) + 1;
+            currentQuizStep++;
+            if (currentQuizStep < quizData.length) {
+                renderQuizQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-question-box').classList.add('hidden');
+            document.getElementById('quiz-result-box').classList.remove('hidden');
+
+            // Find top category
+            let bestCat = 'Storytelling';
+            let maxCount = -1;
+            for (let cat in userAnswers) {
+                if (userAnswers[cat] > maxCount) {
+                    maxCount = userAnswers[cat];
+                    bestCat = cat;
+                }
+            }
+
+            document.getElementById('quiz-result-title').textContent = `${bestCat} Star`;
+            document.getElementById('quiz-result-desc').textContent = `Your answers indicate your stellar strengths align perfectly with the ${bestCat} competition. Prepare to shine brightly!`;
+        }
+
+        function resetQuiz() {
+            currentQuizStep = 0;
+            userAnswers = {};
+            document.getElementById('quiz-result-box').classList.add('hidden');
+            document.getElementById('quiz-question-box').classList.remove('hidden');
+            renderQuizQuestion();
+        }
+
+        // FAQ Accordion
+        function initFAQ() {
+            document.querySelectorAll('.faq-toggle').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const content = btn.nextElementSibling;
+                    const icon = btn.querySelector('span:last-child');
+                    const isOpen = !content.classList.contains('hidden');
+                    
+                    document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+                    document.querySelectorAll('.faq-toggle span:last-child').forEach(i => i.textContent = '＋');
+
+                    if (!isOpen) {
+                        content.classList.remove('hidden');
+                        icon.textContent = '－';
+                    }
+                });
+            });
+        }
+
+        // UI & Navigation
+        function initUI() {
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    navbar.classList.add('shadow-2xl', 'bg-[#0b0f29]/95');
+                    navbar.classList.remove('bg-[#0b0f29]/75');
+                } else {
+                    navbar.classList.remove('shadow-2xl', 'bg-[#0b0f29]/95');
+                    navbar.classList.add('bg-[#0b0f29]/75');
+                }
+            }, { passive: true });
+
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+                mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('is-visible');
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+        }
+
+        // Gallery & Lightbox
+        function initGallery() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active', 'bg-white/20', 'text-white', 'shadow-lg');
+                        b.classList.add('bg-white/5', 'text-honeydew/70');
+                    });
+                    btn.classList.add('active', 'bg-white/20', 'text-white', 'shadow-lg');
+                    btn.classList.remove('bg-white/5', 'text-honeydew/70');
+
+                    const filter = btn.getAttribute('data-filter');
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.classList.remove('hidden-gallery-item');
+                            setTimeout(() => item.style.opacity = '1', 50);
+                        } else {
+                            item.style.opacity = '0';
+                            setTimeout(() => item.classList.add('hidden-gallery-item'), 300);
+                        }
+                    });
+                });
+            });
+
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            const openLightbox = (src) => {
+                lightboxImg.src = src;
+                lightbox.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                requestAnimationFrame(() => {
+                    lightbox.classList.remove('opacity-0');
+                    lightboxImg.classList.remove('scale-95');
+                    lightboxImg.classList.add('scale-100');
+                });
+            };
+            
+            const closeLightbox = () => {
+                lightbox.classList.add('opacity-0');
+                lightboxImg.classList.remove('scale-100');
+                lightboxImg.classList.add('scale-95');
+                setTimeout(() => {
+                    lightbox.classList.add('hidden');
+                    document.body.style.overflow = '';
+                    lightboxImg.src = '';
+                }, 300);
+            };
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img');
+                    if (img) openLightbox(img.src);
+                });
+            });
+
+            document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+            document.getElementById('lightbox-bg').addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+        }
+
+        // Interactive Doodles Physics
+        function initInteractiveDoodles() {
+            const container = document.getElementById('doodle-container');
+            const isMobile = window.innerWidth < 768;
+            const doodleCount = isMobile ? 3 : 6;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const doodleFallbacks = [
+                `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4"><circle cx="50" cy="50" r="25" fill="rgba(153,102,204,0.2)"/><ellipse cx="50" cy="50" rx="45" ry="12" transform="rotate(-20 50 50)"/></svg>`,
+                `<svg viewBox="0 0 100 100" fill="rgba(247,231,178,0.2)" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z"/></svg>`,
+                `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M50 90 C 20 90, 10 60, 30 40 C 50 20, 80 30, 80 50 C 80 70, 60 90, 50 90 Z" fill="rgba(232,245,233,0.1)"/></svg>`
+            ];
+
+            const activeDoodles = [];
+            for (let i = 0; i < doodleCount; i++) {
+                const size = Math.random() * 30 + 40;
+                const el = document.createElement('div');
+                el.className = 'interactive-doodle';
+                el.style.width = `${size}px`;
+                el.style.height = `${size}px`;
+                el.style.color = i % 2 === 0 ? '#F7E7B2' : '#9966CC';
+                el.innerHTML = doodleFallbacks[i % doodleFallbacks.length];
+                container.appendChild(el);
+
+                activeDoodles.push({
+                    el, x: Math.random() * (window.innerWidth - size), y: Math.random() * (window.innerHeight - size),
+                    vx: (Math.random() - 0.5) * 1.2, vy: (Math.random() - 0.5) * 1.2, rot: Math.random() * 360, vRot: (Math.random() - 0.5) * 1.5, size
+                });
+            }
+
+            let dragTarget = null, lastX = 0, lastY = 0;
+            const handleStart = (e, obj) => {
+                dragTarget = obj;
+                obj.el.style.zIndex = '100';
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                lastX = clientX; lastY = clientY;
+                if (!e.touches) e.preventDefault();
+            };
+            const handleMove = (e) => {
+                if (!dragTarget) return;
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                const dx = clientX - lastX, dy = clientY - lastY;
+                dragTarget.x += dx; dragTarget.y += dy;
+                dragTarget.vx = dx * 0.4; dragTarget.vy = dy * 0.4;
+                lastX = clientX; lastY = clientY;
+                dragTarget.el.style.transform = `translate(${dragTarget.x}px, ${dragTarget.y}px) rotate(${dragTarget.rot}deg) scale(1.15)`;
+            };
+            const handleEnd = () => { if (dragTarget) { dragTarget.el.style.zIndex = '30'; dragTarget = null; } };
+
+            activeDoodles.forEach(obj => {
+                obj.el.addEventListener('mousedown', e => handleStart(e, obj));
+                obj.el.addEventListener('touchstart', e => handleStart(e, obj), {passive: false});
+            });
+            window.addEventListener('mousemove', handleMove);
+            window.addEventListener('touchmove', handleMove, {passive: false});
+            window.addEventListener('mouseup', handleEnd);
+            window.addEventListener('touchend', handleEnd);
+
+            function physicsLoop() {
+                activeDoodles.forEach(obj => {
+                    if (!dragTarget || dragTarget !== obj) {
+                        obj.x += obj.vx; obj.y += obj.vy; obj.rot += obj.vRot;
+                        obj.vx *= 0.98; obj.vy *= 0.98;
+                        if (obj.x <= 0 || obj.x >= window.innerWidth - obj.size) obj.vx *= -1;
+                        if (obj.y <= 0 || obj.y >= window.innerHeight - obj.size) obj.vy *= -1;
+                        obj.el.style.transform = `translate(${obj.x}px, ${obj.y}px) rotate(${obj.rot}deg)`;
+                    }
+                });
+                requestAnimationFrame(physicsLoop);
+            }
+            physicsLoop();
+        }
+
+        // Constellation Canvas
+        function initConstellationCanvas() {
+            const canvas = document.getElementById('constellation-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width, height, stars = [];
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+
+            class Star {
+                constructor() {
+                    this.x = Math.random() * width; this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.2; this.vy = (Math.random() - 0.5) * 0.2;
+                    this.radius = Math.random() * 1.5; this.alpha = Math.random() * 0.5 + 0.1;
+                }
+                update() {
+                    if (prefersReducedMotion) return;
+                    this.x += this.vx; this.y += this.vy;
+                    if (this.x < 0) this.x = width; if (this.x > width) this.x = 0;
+                    if (this.y < 0) this.y = height; if (this.y > height) this.y = 0;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(232, 245, 233, ${this.alpha})`;
+                    ctx.fill();
+                }
+            }
+
+            function initStars() {
+                stars = [];
+                const count = window.innerWidth < 768 ? 50 : 100;
+                for (let i = 0; i < count; i++) stars.push(new Star());
+            }
+
+            resize(); initStars();
+            window.addEventListener('resize', () => { resize(); initStars(); });
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                stars.forEach(s => { s.update(); s.draw(); });
+                requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('btn-guide-view').href = eventConfig.guidebookPath;
+            document.getElementById('btn-guide-download').href = eventConfig.guidebookPath;
+            initCountdown();
+            initQuiz();
+            initFAQ();
+            initUI();
+            initGallery();
+            initInteractiveDoodles();
+            initConstellationCanvas();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+/* STREAMING_CHUNK:Defining CSS variables and root tokens... */
+:root {
+--color-deep: #18205C;
+--color-amethyst: #9966CC;
+--color-periwinkle: #9FA8DA;
+--color-vanilla: #F7E7B2;
+--color-honeydew: #E8F5E9;
+}
+
+/* STREAMING_CHUNK:Styling global resets and base layout... */
+*, *::before, *::after {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+background-color: var(--color-deep);
+color: var(--color-honeydew);
+font-family: 'Inter', sans-serif;
+overflow-x: hidden;
+padding-left: env(safe-area-inset-left);
+padding-right: env(safe-area-inset-right);
+-webkit-tap-highlight-color: transparent;
+}
+
+/* STREAMING_CHUNK:Styling custom scrollbars... */
+::-webkit-scrollbar {
+width: 6px;
+}
+::-webkit-scrollbar-track {
+background: var(--color-deep);
+}
+::-webkit-scrollbar-thumb {
+background: var(--color-amethyst);
+border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+background: var(--color-periwinkle);
+}
+
+/* STREAMING_CHUNK:Styling glassmorphism utilities... */
+.glass-card {
+background: rgba(255, 255, 255, 0.04);
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
+border: 1px solid rgba(159, 168, 218, 0.2);
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+}
+
+.glass-card:hover, .glass-card:active, .glass-card:focus-within {
+transform: translateY(-5px);
+border-color: rgba(153, 102, 204, 0.7);
+box-shadow: 0 15px 45px rgba(153, 102, 204, 0.35), inset 0 1px 2px rgba(247, 231, 178, 0.3);
+}
+
+.glass-nav {
+background: rgba(24, 32, 92, 0.85);
+backdrop-filter: blur(18px);
+-webkit-backdrop-filter: blur(18px);
+border-bottom: 1px solid rgba(159, 168, 218, 0.15);
+}
+
+/* STREAMING_CHUNK:Styling typography glows... */
+.text-glow {
+text-shadow: 0 0 15px rgba(247, 231, 178, 0.7), 0 0 30px rgba(153, 102, 204, 0.4);
+}
+
+.heading-glow {
+text-shadow: 0 0 25px rgba(159, 168, 218, 0.6), 0 0 50px rgba(153, 102, 204, 0.3);
+}
+
+/* STREAMING_CHUNK:Styling interactive buttons... */
+.btn-primary {
+background: linear-gradient(135deg, rgba(153,102,204,0.3) 0%, rgba(159,168,218,0.3) 100%);
+border: 1px solid var(--color-periwinkle);
+color: var(--color-vanilla);
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+position: relative;
+overflow: hidden;
+box-shadow: 0 0 15px rgba(153, 102, 204, 0.2);
+}
+
+.btn-primary::before {
+content: '';
+position: absolute;
+top: 0; left: -100%; width: 100%; height: 100%;
+background: linear-gradient(90deg, transparent, rgba(247, 231, 178, 0.4), transparent);
+transition: left 0.6s ease;
+}
+
+.btn-primary:hover, .btn-primary:active {
+box-shadow: 0 0 25px rgba(153, 102, 204, 0.6), 0 0 10px rgba(247, 231, 178, 0.4);
+background: rgba(153, 102, 204, 0.45);
+border-color: var(--color-vanilla);
+transform: translateY(-2px);
+}
+
+.btn-primary:hover::before {
+left: 100%;
+}
+
+.btn-secondary {
+background: rgba(255, 255, 255, 0.02);
+border: 1px solid rgba(232, 245, 233, 0.3);
+color: var(--color-honeydew);
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover, .btn-secondary:active {
+border-color: var(--color-vanilla);
+background: rgba(232, 245, 233, 0.08);
+box-shadow: 0 0 15px rgba(247, 231, 178, 0.2);
+transform: translateY(-2px);
+}
+
+/* STREAMING_CHUNK:Defining animations and keyframes... */
+@keyframes float {
+0%, 100% { transform: translateY(0px) rotate(0deg); }
+50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes float-reverse {
+0%, 100% { transform: translateY(0px) rotate(0deg); }
+50% { transform: translateY(12px) rotate(-3deg); }
+}
+
+@keyframes pulse-glow {
+0%, 100% { opacity: 0.4; transform: scale(1); filter: drop-shadow(0 0 5px rgba(247,231,178,0.3)); }
+50% { opacity: 0.85; transform: scale(1.06); filter: drop-shadow(0 0 20px rgba(153,102,204,0.8)); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-rev { animation: float-reverse 7s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
+
+/* STREAMING_CHUNK:Styling floating doodle elements... */
+.floating-doodle {
+position: absolute;
+pointer-events: none;
+z-index: 1;
+opacity: 0.55;
+transition: opacity 0.3s ease;
+filter: drop-shadow(0 0 10px rgba(153, 102, 204, 0.5));
+}
+
+.floating-doodle:hover {
+opacity: 0.9;
+}
+
+/* STREAMING_CHUNK:Styling timeline and constellation connectors... */
+.timeline-line {
+position: absolute;
+left: 15px;
+top: 0;
+bottom: 0;
+width: 2px;
+background: linear-gradient(to bottom, rgba(153,102,204,0.1), var(--color-periwinkle), rgba(153,102,204,0.1));
+z-index: 0;
+}
+
+@media (min-width: 768px) {
+.timeline-line {
+left: 50%;
+transform: translateX(-50%);
+}
+}
+
+.timeline-node {
+position: relative;
+z-index: 1;
+}
+
+.timeline-node::before {
+content: '✦';
+position: absolute;
+color: var(--color-vanilla);
+font-size: 1.2rem;
+left: -28px;
+top: 0;
+text-shadow: 0 0 12px var(--color-vanilla);
+background: var(--color-deep);
+border-radius: 50%;
+width: 30px;
+height: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+border: 1px solid rgba(159, 168, 218, 0.3);
+}
+
+@media (min-width: 768px) {
+.timeline-node:nth-child(odd)::before {
+left: calc(100% + 15px - 4px);
+}
+.timeline-node:nth-child(even)::before {
+left: -42px;
+}
+}
+
+/* STREAMING_CHUNK:Styling background atmosphere nebulas... */
+.nebula-1 {
+position: fixed;
+top: -15%; left: -15%;
+width: 60vw; height: 60vw;
+background: radial-gradient(circle, rgba(153,102,204,0.18) 0%, transparent 70%);
+filter: blur(70px);
+z-index: -2;
+pointer-events: none;
+}
+
+.nebula-2 {
+position: fixed;
+bottom: 10%; right: -15%;
+width: 70vw; height: 70vw;
+background: radial-gradient(circle, rgba(159,168,218,0.12) 0%, transparent 70%);
+filter: blur(90px);
+z-index: -2;
+pointer-events: none;
+}
+
+/* STREAMING_CHUNK:Gallery filtering and lightbox states... */
+.hidden-gallery-item {
+display: none !important;
+}
+
+#lightbox.active {
+display: flex;
+}
+
+@media (prefers-reduced-motion: reduce) {
+*, ::before, ::after {
+animation-duration: 0.01ms !important;
+animation-iteration-count: 1 !important;
+transition-duration: 0.01ms !important;
+scroll-behavior: auto !important;
+}
+#constellation-canvas, .floating-doodle {
+display: none !important;
+}
+}

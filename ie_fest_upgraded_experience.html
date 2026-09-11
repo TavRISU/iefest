@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>IE-FEST | Incsada English Festival</title>
+    <meta name="description" content="Incsada English Festival - Where Every Voice Becomes a Star in the Cosmic Sea.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#18205C',
+                        amethyst: '#9966CC',
+                        periwinkle: '#9FA8DA',
+                        vanilla: '#F7E7B2',
+                        honeydew: '#E8F5E9',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'cosmic-gradient': 'linear-gradient(180deg, #10153D 0%, #18205C 50%, #0d133b 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ==========================================================================
+           CORE STYLES & VARIABLES
+           ========================================================================== */
+        :root {
+            --color-deep: #18205C;
+            --color-amethyst: #9966CC;
+            --color-periwinkle: #9FA8DA;
+            --color-vanilla: #F7E7B2;
+            --color-honeydew: #E8F5E9;
+        }
+
+        body {
+            background-color: #0b0f29;
+            color: var(--color-honeydew);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Scrollbars */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0b0f29; }
+        ::-webkit-scrollbar-thumb { background: rgba(153, 102, 204, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-periwinkle); }
+
+        /* ==========================================================================
+           GLASSMORPHISM & UI COMPONENTS
+           ========================================================================== */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(159, 168, 218, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(159, 168, 218, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(153, 102, 204, 0.5);
+            box-shadow: 0 20px 40px rgba(153, 102, 204, 0.2), inset 0 1px 2px rgba(247, 231, 178, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-nav {
+            background: rgba(11, 15, 41, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(159, 168, 218, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        /* ==========================================================================
+           GLOWS & TYPOGRAPHY
+           ========================================================================== */
+        .text-glow-vanilla { text-shadow: 0 0 15px rgba(247, 231, 178, 0.8), 0 0 30px rgba(247, 231, 178, 0.4); }
+        .text-glow-periwinkle { text-shadow: 0 0 15px rgba(159, 168, 218, 0.8), 0 0 30px rgba(159, 168, 218, 0.4); }
+        .heading-glow { text-shadow: 0 0 30px rgba(159, 168, 218, 0.4), 0 0 60px rgba(153, 102, 204, 0.3); }
+
+        .title-reveal {
+            background: linear-gradient(to right, var(--color-honeydew), var(--color-vanilla), var(--color-periwinkle));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shine 6s linear infinite;
+        }
+
+        /* ==========================================================================
+           BUTTONS
+           ========================================================================== */
+        .btn-celestial {
+            background: linear-gradient(135deg, rgba(153,102,204,0.2) 0%, rgba(159,168,218,0.2) 100%);
+            border: 1px solid rgba(159,168,218,0.4);
+            color: var(--color-vanilla);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 0 20px rgba(153, 102, 204, 0.2);
+            z-index: 1;
+        }
+
+        .btn-celestial::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(247, 231, 178, 0.3), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+
+        .btn-celestial:hover {
+            box-shadow: 0 0 30px rgba(153, 102, 204, 0.5), 0 0 15px rgba(247, 231, 178, 0.4);
+            background: rgba(153, 102, 204, 0.4);
+            border-color: var(--color-vanilla);
+            transform: translateY(-3px);
+            color: #fff;
+        }
+
+        .btn-celestial:hover::before { left: 100%; }
+
+        /* ==========================================================================
+           INTERACTIVE DOODLES
+           ========================================================================== */
+        .interactive-doodle {
+            position: fixed;
+            cursor: grab;
+            z-index: 30;
+            will-change: transform, left, top;
+            touch-action: none; /* Critical for mobile drag */
+            user-select: none;
+            -webkit-user-drag: none;
+            filter: drop-shadow(0 0 10px rgba(153, 102, 204, 0.4));
+            transition: filter 0.3s ease, transform 0.1s ease;
+        }
+        
+        .interactive-doodle:active {
+            cursor: grabbing;
+            filter: drop-shadow(0 0 25px rgba(247, 231, 178, 0.8));
+            z-index: 100;
+        }
+
+        /* ==========================================================================
+           ANIMATIONS & UTILITIES
+           ========================================================================== */
+        @keyframes shine { to { background-position: 200% center; } }
+        @keyframes pulse-slow { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.05); } }
+        @keyframes float-subtle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .animate-pulse-slow { animation: pulse-slow 8s ease-in-out infinite; }
+        .animate-float { animation: float-subtle 6s ease-in-out infinite; }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Constellation lines for sections */
+        .orbit-ring {
+            position: absolute;
+            border: 1px dashed rgba(159, 168, 218, 0.2);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hidden-gallery-item { display: none !important; }
+    </style>
+</head>
+<body class="antialiased relative selection:bg-periwinkle selection:text-deep bg-cosmic-gradient">
+
+    <!-- ==========================================================================
+         BACKGROUND LAYERS (PARALLAX & CANVAS)
+         ========================================================================== -->
+    <div id="parallax-bg" class="fixed inset-0 pointer-events-none -z-20 overflow-hidden">
+        <!-- Nebulas -->
+        <div class="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-amethyst/20 rounded-full blur-[120px] animate-pulse-slow mix-blend-screen" data-speed="0.02"></div>
+        <div class="absolute bottom-[10%] right-[-10%] w-[50vw] h-[50vw] bg-periwinkle/15 rounded-full blur-[100px] animate-pulse-slow mix-blend-screen" style="animation-delay: -4s;" data-speed="0.03"></div>
+        <div class="absolute top-[40%] left-[20%] w-[40vw] h-[40vw] bg-deep/50 rounded-full blur-[80px]" data-speed="0.01"></div>
+        <!-- Orbit rings -->
+        <div class="orbit-ring w-[150vw] h-[150vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30" data-speed="0.015"></div>
+        <div class="orbit-ring w-[100vw] h-[100vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 border-amethyst/30" data-speed="0.025"></div>
+    </div>
+
+    <!-- Interactive Constellation Canvas -->
+    <canvas id="constellation-canvas" class="fixed inset-0 -z-10 pointer-events-auto opacity-90"></canvas>
+
+    <!-- ==========================================================================
+         INTERACTIVE DOODLES (Rendered via JS physics, placeholder elements here)
+         ========================================================================== -->
+    <div id="doodle-container" class="fixed inset-0 pointer-events-none z-30">
+        <!-- Doodles will be initialized here via JS to use assets/img/doodles/ -->
+        <!-- Fallbacks are built-in if images are missing -->
+    </div>
+
+    <!-- ==========================================================================
+         NAVIGATION
+         ========================================================================== -->
+    <nav id="navbar" class="fixed w-full z-50 py-4 glass-nav" style="padding-top: max(1rem, env(safe-area-inset-top));">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="relative">
+                    <span class="text-vanilla text-2xl group-hover:rotate-180 transition-transform duration-700 inline-block text-glow-vanilla">✦</span>
+                    <span class="absolute inset-0 text-periwinkle text-2xl animate-ping opacity-0 group-hover:opacity-100">✦</span>
+                </div>
+                <span class="font-display font-bold text-lg sm:text-xl tracking-widest text-honeydew group-hover:text-white transition-colors">IE-FEST</span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8 text-xs lg:text-sm font-medium tracking-widest">
+                <a href="#about" class="text-honeydew/80 hover:text-vanilla transition-all hover:text-glow-vanilla">ABOUT</a>
+                <a href="#competitions" class="text-honeydew/80 hover:text-vanilla transition-all hover:text-glow-vanilla">COMPETITIONS</a>
+                <a href="#guidebook" class="text-honeydew/80 hover:text-vanilla transition-all hover:text-glow-vanilla">GUIDE</a>
+                <a href="#gallery" class="text-honeydew/80 hover:text-vanilla transition-all hover:text-glow-vanilla">GALLERY</a>
+                <a href="#registration" class="btn-celestial px-5 py-2 rounded-full font-bold">JOIN NOW</a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-honeydew hover:text-vanilla p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full glass-panel flex flex-col p-4 shadow-2xl border-t-0">
+            <a href="#about" class="text-honeydew hover:text-vanilla px-4 py-3 text-sm font-medium tracking-widest">ABOUT</a>
+            <a href="#competitions" class="text-honeydew hover:text-vanilla px-4 py-3 text-sm font-medium tracking-widest">COMPETITIONS</a>
+            <a href="#guidebook" class="text-honeydew hover:text-vanilla px-4 py-3 text-sm font-medium tracking-widest">GUIDE</a>
+            <a href="#gallery" class="text-honeydew hover:text-vanilla px-4 py-3 text-sm font-medium tracking-widest">GALLERY</a>
+            <a href="#registration" class="text-vanilla px-4 py-3 text-sm font-bold tracking-widest border-t border-white/10 mt-2 pt-4">JOIN NOW ✦</a>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 pb-20 px-4 sm:px-6 z-10">
+        <div class="text-center max-w-5xl mx-auto flex flex-col items-center" data-speed="0.05">
+            <!-- Floating Badge -->
+            <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full glass-panel border border-vanilla/30 text-vanilla text-xs sm:text-sm font-semibold tracking-[0.2em] mb-8 animate-float uppercase shadow-[0_0_20px_rgba(247,231,178,0.2)]">
+                <span class="w-2 h-2 rounded-full bg-vanilla animate-pulse"></span>
+                Enter the Cosmic Sea
+            </div>
+            
+            <!-- Main Title -->
+            <h1 class="font-display text-[clamp(3.5rem,12vw,8rem)] leading-none font-bold mb-4 tracking-tighter title-reveal heading-glow">
+                IE-FEST
+            </h1>
+            <p class="text-[clamp(1.2rem,4vw,2rem)] text-periwinkle/90 font-light mb-12 tracking-[0.15em] uppercase">
+                Incsada English Festival
+            </p>
+            
+            <!-- Event Info -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-honeydew/80 mb-12 glass-panel py-4 px-8 rounded-2xl">
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-amethyst" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span data-config="date">COMING SOON</span>
+                </div>
+                <span class="hidden sm:inline text-vanilla opacity-50">✦</span>
+                <div class="flex items-center gap-2">
+                    <svg class="w-5 h-5 text-amethyst" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                    <span data-config="location">MOJOKERTO</span>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-5 w-full max-w-md mx-auto relative z-20">
+                <a href="#registration" class="btn-celestial py-4 px-8 rounded-full font-bold tracking-widest flex-1 flex items-center justify-center gap-3">
+                    REGISTER NOW
+                </a>
+                <a href="#guidebook" class="py-4 px-8 rounded-full font-semibold tracking-widest flex-1 border border-periwinkle/30 bg-white/5 hover:bg-white/10 transition-all text-honeydew hover:text-white flex items-center justify-center">
+                    GUIDE BOOK
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT SECTION
+         ========================================================================== -->
+    <section id="about" class="py-24 relative px-4 sm:px-6 z-10">
+        <div class="max-w-7xl mx-auto reveal-on-scroll">
+            <div class="text-center mb-16">
+                <span class="text-vanilla text-xs font-bold tracking-[0.2em] block mb-3 uppercase">Discover the Depth</span>
+                <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] font-bold text-white mb-6 heading-glow leading-tight">The Cosmic Sea of Voices</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
+                <!-- Text Content -->
+                <div class="lg:col-span-7 glass-card p-8 sm:p-12 rounded-[2rem] relative overflow-hidden">
+                    <div class="absolute -right-20 -top-20 text-[200px] text-white opacity-5 pointer-events-none rotate-12">✧</div>
+                    <h3 class="text-2xl sm:text-3xl font-display text-vanilla mb-6 font-semibold tracking-wide">About IE-FEST</h3>
+                    <p class="text-honeydew/80 leading-relaxed mb-6 text-base sm:text-lg font-light">
+                        Incsada English Festival (IE-FEST) is a premier English competition designed to connect bright minds in an immersive environment. Imagine a vast ocean where every drop is a star; we bring together participants to form a beautiful constellation of talents.
+                    </p>
+                    <p class="text-honeydew/80 leading-relaxed text-base sm:text-lg font-light">
+                        Whether you are navigating the depths of an Olympiad or riding the waves of a Storytelling performance, your voice adds a unique glow to our universe. Let your brilliance shine through the currents.
+                    </p>
+                </div>
+
+                <!-- Timeline Constellation -->
+                <div class="lg:col-span-5 flex flex-col gap-6 relative">
+                    <div class="absolute left-6 top-6 bottom-6 w-px bg-gradient-to-b from-amethyst via-periwinkle to-transparent opacity-30"></div>
+                    
+                    <div class="glass-card p-6 rounded-2xl ml-12 relative group hover:border-vanilla/50 transition-colors">
+                        <div class="absolute -left-[3.25rem] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-deep border-2 border-vanilla group-hover:bg-vanilla group-hover:shadow-[0_0_15px_#F7E7B2] transition-all"></div>
+                        <span class="text-vanilla font-bold text-xs tracking-widest block mb-2">PHASE 1</span>
+                        <h4 class="text-lg font-display text-white mb-2 font-semibold">Registration</h4>
+                        <p class="text-sm text-honeydew/60">Secure your spot in the cosmic ocean.</p>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl ml-12 relative group hover:border-amethyst/50 transition-colors">
+                        <div class="absolute -left-[3.25rem] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-deep border-2 border-amethyst group-hover:bg-amethyst group-hover:shadow-[0_0_15px_#9966CC] transition-all"></div>
+                        <span class="text-amethyst font-bold text-xs tracking-widest block mb-2">PHASE 2</span>
+                        <h4 class="text-lg font-display text-white mb-2 font-semibold">The Main Event</h4>
+                        <p class="text-sm text-honeydew/60">The day stars gather and shine.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         COMPETITIONS SECTION
+         ========================================================================== -->
+    <section id="competitions" class="py-24 relative px-4 sm:px-6 z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <span class="text-periwinkle text-xs font-bold tracking-[0.2em] block mb-3 uppercase">Six Stars of IE-FEST</span>
+                <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] font-bold text-white mb-6 heading-glow leading-tight">Competitions</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                
+                <!-- OLYMPIAD SD -->
+                <div class="glass-card p-8 rounded-[2rem] group relative overflow-hidden reveal-on-scroll">
+                    <div class="absolute inset-0 bg-gradient-to-br from-periwinkle/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="text-4xl group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300">📝</div>
+                            <span class="py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-vanilla font-bold tracking-wider">SD</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-vanilla transition-colors">Olympiad</h3>
+                        <p class="text-honeydew/60 text-sm font-light leading-relaxed">Dive deep into fundamental English knowledge. Test your academic mettle in grammar and comprehension.</p>
+                    </div>
+                </div>
+
+                <!-- OLYMPIAD SMP -->
+                <div class="glass-card p-8 rounded-[2rem] group relative overflow-hidden reveal-on-scroll" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-periwinkle/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="text-4xl group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300">🧠</div>
+                            <span class="py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-vanilla font-bold tracking-wider">SMP</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-vanilla transition-colors">Olympiad</h3>
+                        <p class="text-honeydew/60 text-sm font-light leading-relaxed">Challenge your advanced linguistics. A rigorous test of structure, vocabulary, and critical reading.</p>
+                    </div>
+                </div>
+
+                <!-- STORYTELLING SD -->
+                <div class="glass-card p-8 rounded-[2rem] group relative overflow-hidden reveal-on-scroll" style="transition-delay: 200ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amethyst/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="text-4xl group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300">📖</div>
+                            <span class="py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-vanilla font-bold tracking-wider">SD</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-amethyst transition-colors">Storytelling</h3>
+                        <p class="text-honeydew/60 text-sm font-light leading-relaxed">Flow like water with your narrative. Captivate the audience with imaginative and creative expression.</p>
+                    </div>
+                </div>
+
+                <!-- STORYTELLING SMP -->
+                <div class="glass-card p-8 rounded-[2rem] group relative overflow-hidden reveal-on-scroll">
+                    <div class="absolute inset-0 bg-gradient-to-br from-amethyst/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="text-4xl group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300">🎭</div>
+                            <span class="py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-vanilla font-bold tracking-wider">SMP</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-amethyst transition-colors">Storytelling</h3>
+                        <p class="text-honeydew/60 text-sm font-light leading-relaxed">Bring characters to life. Deliver compelling tales with perfect pronunciation and stage presence.</p>
+                    </div>
+                </div>
+
+                <!-- SPEECH SMP -->
+                <div class="glass-card p-8 rounded-[2rem] group relative overflow-hidden reveal-on-scroll" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-vanilla/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="text-4xl group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300">🎙️</div>
+                            <span class="py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-vanilla font-bold tracking-wider">SMP</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-vanilla transition-colors">Speech</h3>
+                        <p class="text-honeydew/60 text-sm font-light leading-relaxed">Make a splash! Articulate your thoughts, inspire the crowd, and persuade the judges.</p>
+                    </div>
+                </div>
+
+                <!-- SPELLING BEE SMP -->
+                <div class="glass-card p-8 rounded-[2rem] group relative overflow-hidden reveal-on-scroll" style="transition-delay: 200ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-vanilla/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="text-4xl group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300">🐝</div>
+                            <span class="py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[10px] text-vanilla font-bold tracking-wider">SMP</span>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-white mb-3 group-hover:text-vanilla transition-colors">Spelling Bee</h3>
+                        <p class="text-honeydew/60 text-sm font-light leading-relaxed">Precision under pressure. Master complex vocabulary and spell your way to the top of the constellation.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         GUIDE BOOK SECTION
+         ========================================================================== -->
+    <section id="guidebook" class="py-24 relative px-4 sm:px-6 z-10">
+        <div class="max-w-5xl mx-auto reveal-on-scroll">
+            <div class="glass-card rounded-[2.5rem] p-8 md:p-14 relative overflow-hidden border-t-2 border-t-periwinkle/50">
+                <!-- Cosmic Map Background -->
+                <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 80% 20%, var(--color-amethyst) 0%, transparent 40%);"></div>
+                <div class="absolute -left-20 -bottom-20 w-64 h-64 border border-periwinkle/20 rounded-full animate-pulse-slow"></div>
+                <div class="absolute -left-10 -bottom-10 w-48 h-48 border border-periwinkle/30 rounded-full animate-pulse-slow"></div>
+
+                <div class="grid md:grid-cols-2 gap-10 items-center relative z-10">
+                    <div class="order-2 md:order-1 relative group mx-auto w-full max-w-sm">
+                        <!-- Simulated Book Cover -->
+                        <div class="aspect-[3/4] rounded-xl bg-gradient-to-br from-deep to-[#0b0f29] border border-white/10 shadow-2xl p-6 flex flex-col justify-center items-center text-center transform group-hover:rotate-y-12 group-hover:scale-105 transition-all duration-500 relative">
+                            <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-tr from-transparent to-white/5 pointer-events-none"></div>
+                            <span class="text-vanilla text-4xl mb-4 text-glow-vanilla">✦</span>
+                            <h4 class="font-display font-bold text-xl text-white tracking-widest mb-2">IE-FEST 2026</h4>
+                            <p class="text-periwinkle text-xs tracking-[0.3em] uppercase mb-6 border-b border-white/10 pb-4 w-full">Guide Book</p>
+                            <p class="text-[10px] text-honeydew/50">Official Rules & Regulations</p>
+                        </div>
+                    </div>
+                    
+                    <div class="order-1 md:order-2 text-center md:text-left">
+                        <span class="text-periwinkle text-xs font-bold tracking-[0.2em] block mb-3 uppercase">The Cosmic Map</span>
+                        <h2 class="font-display text-[clamp(2rem,5vw,3rem)] leading-tight font-bold text-white mb-6">Navigate the <br><span class="text-periwinkle text-glow-periwinkle">Constellation</span></h2>
+                        <p class="text-honeydew/70 text-base mb-8 font-light leading-relaxed">
+                            Everything you need to know about timelines, rules, judging criteria, and technical requirements is written in the stars. Download the official guidebook to prepare for your journey.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a id="btn-guide-view" href="assets/docs/guidebook.pdf" target="_blank" class="btn-celestial py-3 px-8 rounded-full font-bold text-sm text-center">
+                                VIEW GUIDE
+                            </a>
+                            <a id="btn-guide-download" href="assets/docs/guidebook.pdf" download class="py-3 px-8 rounded-full font-bold text-sm text-center border border-white/20 hover:bg-white/10 transition-colors">
+                                DOWNLOAD PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         REGISTRATION SECTION
+         ========================================================================== -->
+    <section id="registration" class="py-24 relative px-4 sm:px-6 z-10">
+        <div class="max-w-6xl mx-auto reveal-on-scroll">
+            <div class="glass-card rounded-[3rem] p-8 sm:p-16 border-t-2 border-t-vanilla shadow-[0_0_80px_rgba(247,231,178,0.1)] relative overflow-hidden bg-gradient-to-br from-white/5 to-transparent">
+                <!-- Glowing Core -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-vanilla/10 rounded-full blur-[100px] pointer-events-none"></div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center relative z-10">
+                    <div class="text-center md:text-left">
+                        <span class="text-vanilla text-xs font-bold tracking-[0.2em] block mb-4 uppercase">Take Your Place</span>
+                        <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] leading-[1.1] font-bold text-white mb-6">JOIN THE <br><span class="text-vanilla text-glow-vanilla">CONSTELLATION</span></h2>
+                        <p class="text-honeydew/80 text-base sm:text-lg mb-10 font-light max-w-md mx-auto md:mx-0">
+                            Ready to shine in the cosmic sea? Register now and secure your place among the brightest stars of IE-FEST.
+                        </p>
+                        
+                        <a id="btn-register-link" href="#" target="_blank" class="btn-celestial inline-flex py-4 px-10 rounded-full font-bold tracking-widest items-center justify-center gap-3 w-full sm:w-auto shadow-2xl text-lg group">
+                            REGISTER HERE 
+                            <svg class="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                    
+                    <div class="flex justify-center items-center">
+                        <div class="relative group p-4 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl">
+                            <!-- Orbit decoration around QR -->
+                            <div class="absolute inset-0 border border-vanilla/30 rounded-3xl animate-[spin_10s_linear_infinite] pointer-events-none"></div>
+                            <div class="absolute inset-[-10px] border border-dashed border-periwinkle/30 rounded-[2rem] animate-[spin_15s_linear_infinite_reverse] pointer-events-none"></div>
+                            
+                            <div class="bg-white p-3 rounded-2xl relative z-10 transform group-hover:scale-105 transition-transform duration-500">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://register.iefest.com&color=18205C&bgcolor=F7E7B2" alt="Registration QR Code" class="w-48 h-48 sm:w-64 sm:h-64 object-cover rounded-xl">
+                            </div>
+                            <p class="text-[10px] sm:text-xs text-vanilla mt-6 text-center font-bold tracking-[0.2em] uppercase absolute -bottom-10 left-1/2 -translate-x-1/2 w-full">
+                                Scan to register
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         SUBMISSION SECTION
+         ========================================================================== -->
+    <section id="submission" class="py-12 relative px-4 sm:px-6 z-10">
+        <div class="max-w-4xl mx-auto text-center reveal-on-scroll">
+            <h2 class="font-display text-2xl font-bold text-white mb-8 tracking-widest uppercase">Let Your Work Shine</h2>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <!-- Speech Submission -->
+                <div class="glass-card p-6 rounded-2xl hover:border-vanilla/40 flex flex-col items-center group">
+                    <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🎙️</span>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Speech Video</h3>
+                    <p class="text-xs text-honeydew/60 mb-4">Upload your recorded performance</p>
+                    <a id="btn-submit-speech" href="#" target="_blank" class="text-xs font-bold tracking-widest text-vanilla border border-vanilla/30 py-2 px-6 rounded-full hover:bg-vanilla hover:text-deep transition-colors w-full">SUBMIT NOW ↗</a>
+                </div>
+                <!-- Storytelling Submission -->
+                <div class="glass-card p-6 rounded-2xl hover:border-amethyst/40 flex flex-col items-center group">
+                    <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🎭</span>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Storytelling Video</h3>
+                    <p class="text-xs text-honeydew/60 mb-4">Upload your recorded performance</p>
+                    <a id="btn-submit-story" href="#" target="_blank" class="text-xs font-bold tracking-widest text-amethyst border border-amethyst/30 py-2 px-6 rounded-full hover:bg-amethyst hover:text-deep transition-colors w-full">SUBMIT NOW ↗</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         GALLERY SECTION
+         ========================================================================== -->
+    <section id="gallery" class="py-24 relative px-4 sm:px-6 z-10">
+        <div class="max-w-7xl mx-auto reveal-on-scroll">
+            <div class="text-center mb-12">
+                <span class="text-amethyst text-xs font-bold tracking-[0.2em] block mb-3 uppercase">Visual Archives</span>
+                <h2 class="font-display text-[clamp(2.5rem,6vw,4rem)] font-bold text-white mb-6 heading-glow leading-tight">Memories</h2>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
+                <button class="filter-btn active bg-white/20 text-white shadow-lg px-4 py-2 rounded-full text-xs font-bold tracking-wider transition-all" data-filter="all">ALL</button>
+                <button class="filter-btn bg-white/5 text-honeydew/70 hover:bg-white/10 px-4 py-2 rounded-full text-xs font-bold tracking-wider transition-all" data-filter="event">EVENT</button>
+                <button class="filter-btn bg-white/5 text-honeydew/70 hover:bg-white/10 px-4 py-2 rounded-full text-xs font-bold tracking-wider transition-all" data-filter="committee">COMMITTEE</button>
+                <button class="filter-btn bg-white/5 text-honeydew/70 hover:bg-white/10 px-4 py-2 rounded-full text-xs font-bold tracking-wider transition-all" data-filter="competition">COMPETITIONS</button>
+            </div>
+
+            <!-- Grid (Using placeholders that look elegant) -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]">
+                <!-- Item 1 -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden cursor-pointer" data-category="event">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop" alt="Event Crowd" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-xs font-bold tracking-widest">OPENING CEREMONY</span>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden cursor-pointer col-span-2 row-span-2" data-category="competition">
+                    <img src="https://images.unsplash.com/photo-1475721025871-870590623097?q=80&w=1200&auto=format&fit=crop" alt="Speech Competition" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <span class="text-white text-sm font-bold tracking-widest">SPEECH FINALS</span>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden cursor-pointer" data-category="committee">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=800&auto=format&fit=crop" alt="Committee" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-xs font-bold tracking-widest">CREW</span>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden cursor-pointer" data-category="competition">
+                    <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?q=80&w=800&auto=format&fit=crop" alt="Storytelling" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-xs font-bold tracking-widest">STORYTELLING</span>
+                    </div>
+                </div>
+                <!-- Item 5 -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden cursor-pointer" data-category="event">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop" alt="Venue" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deep/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <span class="text-white text-xs font-bold tracking-widest">VENUE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-[100] hidden flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <div id="lightbox-bg" class="absolute inset-0 bg-deep/95 backdrop-blur-md cursor-pointer"></div>
+        <button id="lightbox-close" class="absolute top-6 right-6 text-white/50 hover:text-white p-2 z-10 transition-colors">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <img id="lightbox-img" src="" alt="Expanded Memory" class="relative z-10 max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300">
+    </div>
+
+    <!-- ==========================================================================
+         FOOTER
+         ========================================================================== -->
+    <footer class="bg-[#060919] border-t border-white/5 pt-20 pb-10 relative z-10 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16">
+                <div class="md:col-span-5">
+                    <a href="#home" class="inline-block mb-4">
+                        <h2 class="font-display text-3xl font-bold text-white tracking-widest">IE-FEST <span class="text-vanilla">✦</span></h2>
+                    </a>
+                    <p class="text-periwinkle text-sm mb-6 uppercase tracking-widest">Incsada English Festival</p>
+                    <p class="text-honeydew/50 text-sm max-w-sm leading-relaxed font-light">
+                        "Different voices. One cosmic sea."<br><br>
+                        Connecting talents and celebrating English proficiency in a spectacular event. Keep reaching for the stars.
+                    </p>
+                </div>
+                
+                <div class="md:col-span-3 md:col-start-7">
+                    <h3 class="text-white font-bold mb-6 tracking-widest text-xs uppercase border-b border-white/10 pb-4">Explore</h3>
+                    <ul class="space-y-4 text-sm text-honeydew/60">
+                        <li><a href="#about" class="hover:text-vanilla transition-colors block">About</a></li>
+                        <li><a href="#competitions" class="hover:text-vanilla transition-colors block">Competitions</a></li>
+                        <li><a href="#guidebook" class="hover:text-vanilla transition-colors block">Guide Book</a></li>
+                        <li><a href="#gallery" class="hover:text-vanilla transition-colors block">Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <div class="md:col-span-3">
+                    <h3 class="text-white font-bold mb-6 tracking-widest text-xs uppercase border-b border-white/10 pb-4">Contact</h3>
+                    <ul class="space-y-4 text-sm text-honeydew/60">
+                        <li class="flex items-center gap-3"><span class="text-vanilla">📍</span> <span data-config="location">Mojokerto, East Java</span></li>
+                        <li class="flex items-center gap-3"><span class="text-vanilla">✉️</span> contact@iefest.com</li>
+                        <li class="flex gap-4 mt-6">
+                            <a id="link-ig" href="#" class="text-white/40 hover:text-vanilla transition-colors" aria-label="Instagram">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 text-center flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-honeydew/30">&copy; <span id="year">2026</span> IE-FEST. All rights reserved.</p>
+                <p class="text-xs text-honeydew/30">Designed with ✦ for the Cosmic Sea.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         SCRIPTS
+         ========================================================================== -->
+    <script>
+        /**
+         * 1. CONFIGURATION (Preserved from original logic)
+         */
+        const eventConfig = {
+            date: "OCT 24 - 26, 2026",
+            location: "MOJOKERTO, ID",
+            registrationUrl: "https://register.iefest.com",
+            guidebookPath: "assets/docs/guidebook.pdf",
+            submission: { speech: "https://drive.google.com/...", storytelling: "https://drive.google.com/..." },
+            social: { instagram: "https://instagram.com/iefest" }
+        };
+
+        function initConfigData() {
+            document.querySelectorAll('[data-config]').forEach(el => {
+                const key = el.getAttribute('data-config');
+                if (eventConfig[key]) el.textContent = eventConfig[key];
+            });
+
+            const updateLink = (id, url) => {
+                const el = document.getElementById(id);
+                if (el && url) el.href = url;
+            };
+
+            updateLink('btn-register-link', eventConfig.registrationUrl);
+            updateLink('btn-guide-view', eventConfig.guidebookPath);
+            updateLink('btn-guide-download', eventConfig.guidebookPath);
+            updateLink('btn-submit-speech', eventConfig.submission.speech);
+            updateLink('btn-submit-story', eventConfig.submission.storytelling);
+            updateLink('link-ig', eventConfig.social.instagram);
+            
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+        }
+
+        /**
+         * 2. NAVIGATION & SCROLL REVEAL
+         */
+        function initUI() {
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    navbar.classList.add('shadow-2xl', 'bg-[#0b0f29]/95');
+                    navbar.classList.remove('bg-[#0b0f29]/75');
+                } else {
+                    navbar.classList.remove('shadow-2xl', 'bg-[#0b0f29]/95');
+                    navbar.classList.add('bg-[#0b0f29]/75');
+                }
+            }, { passive: true });
+
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+                mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+            }
+
+            // Intersection Observer for scroll reveal
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+        }
+
+        /**
+         * 3. MOUSE PARALLAX (Desktop only)
+         */
+        function initParallax() {
+            if (window.matchMedia('(max-width: 768px)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            
+            const layers = document.querySelectorAll('[data-speed]');
+            let reqId = null;
+            let targetX = 0, targetY = 0;
+            let currentX = 0, currentY = 0;
+
+            window.addEventListener('mousemove', (e) => {
+                const x = (window.innerWidth - e.pageX * 2);
+                const y = (window.innerHeight - e.pageY * 2);
+                targetX = x;
+                targetY = y;
+            }, { passive: true });
+
+            function updateParallax() {
+                currentX += (targetX - currentX) * 0.1;
+                currentY += (targetY - currentY) * 0.1;
+                
+                layers.forEach(layer => {
+                    const speed = layer.getAttribute('data-speed');
+                    const x = currentX * speed;
+                    const y = currentY * speed;
+                    layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+                });
+                reqId = requestAnimationFrame(updateParallax);
+            }
+            updateParallax();
+        }
+
+        /**
+         * 4. GALLERY & LIGHTBOX
+         */
+        function initGallery() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('active', 'bg-white/20', 'text-white', 'shadow-lg');
+                        b.classList.add('bg-white/5', 'text-honeydew/70');
+                    });
+                    btn.classList.add('active', 'bg-white/20', 'text-white', 'shadow-lg');
+                    btn.classList.remove('bg-white/5', 'text-honeydew/70');
+
+                    const filter = btn.getAttribute('data-filter');
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.classList.remove('hidden-gallery-item');
+                            setTimeout(() => item.style.opacity = '1', 50);
+                        } else {
+                            item.style.opacity = '0';
+                            setTimeout(() => item.classList.add('hidden-gallery-item'), 300);
+                        }
+                    });
+                });
+            });
+
+            // Lightbox
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            const openLightbox = (src) => {
+                lightboxImg.src = src;
+                lightbox.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                requestAnimationFrame(() => {
+                    lightbox.classList.remove('opacity-0');
+                    lightboxImg.classList.remove('scale-95');
+                    lightboxImg.classList.add('scale-100');
+                });
+            };
+            
+            const closeLightbox = () => {
+                lightbox.classList.add('opacity-0');
+                lightboxImg.classList.remove('scale-100');
+                lightboxImg.classList.add('scale-95');
+                setTimeout(() => {
+                    lightbox.classList.add('hidden');
+                    document.body.style.overflow = '';
+                    lightboxImg.src = '';
+                }, 300);
+            };
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img');
+                    if (img) openLightbox(img.src);
+                });
+            });
+
+            document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+            document.getElementById('lightbox-bg').addEventListener('click', closeLightbox);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+            
+            // Touch Swipe to close (mobile)
+            let touchStartY = 0;
+            lightbox.addEventListener('touchstart', e => touchStartY = e.changedTouches[0].screenY, {passive: true});
+            lightbox.addEventListener('touchend', e => {
+                if (Math.abs(e.changedTouches[0].screenY - touchStartY) > 50) closeLightbox();
+            }, {passive: true});
+        }
+
+        /**
+         * 5. INTERACTIVE DOODLES (Physics Engine)
+         */
+        function initInteractiveDoodles() {
+            const container = document.getElementById('doodle-container');
+            const isMobile = window.innerWidth < 768;
+            const doodleCount = isMobile ? 4 : 8;
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            if (prefersReducedMotion) return;
+
+            // Simulated local assets (SVG fallbacks injected into div to look like images)
+            const doodleAssets = [
+                { src: 'assets/img/doodles/planet.png', fallback: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4"><circle cx="50" cy="50" r="25" fill="rgba(153,102,204,0.2)"/><ellipse cx="50" cy="50" rx="45" ry="12" transform="rotate(-20 50 50)"/></svg>`, color: '#9966CC' },
+                { src: 'assets/img/doodles/star.png', fallback: `<svg viewBox="0 0 100 100" fill="rgba(247,231,178,0.2)" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z"/></svg>`, color: '#F7E7B2' },
+                { src: 'assets/img/doodles/shell.png', fallback: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M50 90 C 20 90, 10 60, 30 40 C 50 20, 80 30, 80 50 C 80 70, 60 90, 50 90 Z" fill="rgba(232,245,233,0.1)"/><path d="M50 90 C 40 70, 40 50, 50 40" /><path d="M50 90 C 60 70, 60 50, 50 40" /></svg>`, color: '#E8F5E9' },
+                { src: 'assets/img/doodles/jelly.png', fallback: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M50 20 C20 20, 20 50, 20 50 C20 60, 30 60, 30 60 C30 60, 40 55, 50 60 C60 55, 70 60, 70 60 C70 60, 80 60, 80 50 C80 50, 80 20, 50 20 Z" fill="rgba(159,168,218,0.2)"/><path d="M30 60 Q25 80, 35 90" /><path d="M45 60 Q40 85, 50 95" /><path d="M55 60 Q60 85, 50 95" /><path d="M70 60 Q75 80, 65 90" /></svg>`, color: '#9FA8DA' }
+            ];
+
+            const activeDoodles = [];
+
+            for (let i = 0; i < doodleCount; i++) {
+                const asset = doodleAssets[i % doodleAssets.length];
+                const size = Math.random() * 40 + (isMobile ? 40 : 60);
+                
+                const el = document.createElement('div');
+                el.className = 'interactive-doodle';
+                el.style.width = `${size}px`;
+                el.style.height = `${size}px`;
+                el.style.color = asset.color;
+                
+                // Attempt to load img, use SVG as fallback. (In production, replace with strict <img> logic)
+                el.innerHTML = asset.fallback; 
+                el.setAttribute('aria-hidden', 'true');
+                
+                container.appendChild(el);
+
+                activeDoodles.push({
+                    el: el,
+                    x: Math.random() * (window.innerWidth - size),
+                    y: Math.random() * (window.innerHeight - size),
+                    vx: (Math.random() - 0.5) * 1.5,
+                    vy: (Math.random() - 0.5) * 1.5,
+                    rot: Math.random() * 360,
+                    vRot: (Math.random() - 0.5) * 2,
+                    isDragging: false,
+                    size: size
+                });
+            }
+
+            // Interaction Variables
+            let dragTarget = null;
+            let lastX = 0, lastY = 0;
+
+            const handleStart = (e, obj) => {
+                obj.isDragging = true;
+                dragTarget = obj;
+                obj.el.style.zIndex = '100';
+                obj.el.style.transform = `translate(${obj.x}px, ${obj.y}px) rotate(${obj.rot}deg) scale(1.15)`;
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                lastX = clientX;
+                lastY = clientY;
+                if (!e.touches) e.preventDefault(); // allow touch scrolling if misclicked
+            };
+
+            const handleMove = (e) => {
+                if (!dragTarget) return;
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                
+                const dx = clientX - lastX;
+                const dy = clientY - lastY;
+                
+                dragTarget.x += dx;
+                dragTarget.y += dy;
+                dragTarget.vx = dx * 0.5; // Throw momentum
+                dragTarget.vy = dy * 0.5;
+                dragTarget.vRot = dx * 0.2;
+                
+                lastX = clientX;
+                lastY = clientY;
+                dragTarget.el.style.transform = `translate(${dragTarget.x}px, ${dragTarget.y}px) rotate(${dragTarget.rot}deg) scale(1.15)`;
+                
+                if (e.touches && e.cancelable) e.preventDefault();
+            };
+
+            const handleEnd = () => {
+                if (!dragTarget) return;
+                dragTarget.isDragging = false;
+                dragTarget.el.style.zIndex = '30';
+                dragTarget = null;
+            };
+
+            // Bind events
+            activeDoodles.forEach(obj => {
+                obj.el.addEventListener('mousedown', (e) => handleStart(e, obj));
+                obj.el.addEventListener('touchstart', (e) => handleStart(e, obj), {passive: false});
+            });
+            window.addEventListener('mousemove', handleMove);
+            window.addEventListener('touchmove', handleMove, {passive: false});
+            window.addEventListener('mouseup', handleEnd);
+            window.addEventListener('touchend', handleEnd);
+
+            // Physics Loop
+            function physicsLoop() {
+                activeDoodles.forEach(obj => {
+                    if (!obj.isDragging) {
+                        obj.x += obj.vx;
+                        obj.y += obj.vy;
+                        obj.rot += obj.vRot;
+
+                        // Friction / gentle return to drift
+                        const targetSpeed = 0.5;
+                        const currentSpeed = Math.hypot(obj.vx, obj.vy);
+                        if (currentSpeed > targetSpeed) {
+                            obj.vx *= 0.95;
+                            obj.vy *= 0.95;
+                            obj.vRot *= 0.95;
+                        } else {
+                            // Add slight drift
+                            obj.vx += (Math.random() - 0.5) * 0.05;
+                            obj.vy += (Math.random() - 0.5) * 0.05;
+                        }
+
+                        // Bounds
+                        if (obj.x <= 0 || obj.x >= window.innerWidth - obj.size) { obj.vx *= -1; obj.x = Math.max(0, Math.min(obj.x, window.innerWidth - obj.size)); }
+                        if (obj.y <= 0 || obj.y >= window.innerHeight - obj.size) { obj.vy *= -1; obj.y = Math.max(0, Math.min(obj.y, window.innerHeight - obj.size)); }
+
+                        obj.el.style.transform = `translate(${obj.x}px, ${obj.y}px) rotate(${obj.rot}deg)`;
+                    }
+                });
+                requestAnimationFrame(physicsLoop);
+            }
+            physicsLoop();
+        }
+
+        /**
+         * 6. CONSTELLATION CANVAS (Interactive Nodes)
+         */
+        function initConstellationCanvas() {
+            const canvas = document.getElementById('constellation-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            let width, height;
+            let stars = [];
+            
+            // Constellation Nodes (Interactive UI mapping)
+            const sectionNodes = [
+                { id: 'about', label: 'ABOUT', el: document.getElementById('about'), rx: 0.2, ry: 0.3 },
+                { id: 'competitions', label: 'COMPETITIONS', el: document.getElementById('competitions'), rx: 0.8, ry: 0.4 },
+                { id: 'guide', label: 'GUIDE', el: document.getElementById('guidebook'), rx: 0.25, ry: 0.7 },
+                { id: 'gallery', label: 'GALLERY', el: document.getElementById('gallery'), rx: 0.75, ry: 0.8 },
+                { id: 'reg', label: 'REGISTER', el: document.getElementById('registration'), rx: 0.5, ry: 0.6 }
+            ];
+            
+            let nodes = [];
+            let mouse = { x: -1000, y: -1000, isDown: false };
+            let hoveredNode = null;
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                
+                // Reposition nodes based on screen size
+                nodes = sectionNodes.map(n => ({
+                    ...n,
+                    x: width * n.rx,
+                    y: height * n.ry,
+                    radius: window.innerWidth < 768 ? 4 : 6,
+                    glow: 0
+                }));
+            }
+
+            class Star {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.2;
+                    this.vy = (Math.random() - 0.5) * 0.2;
+                    this.radius = Math.random() * 1.5;
+                    this.alpha = Math.random() * 0.5 + 0.1;
+                }
+                update() {
+                    if (prefersReducedMotion) return;
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0) this.x = width; if (this.x > width) this.x = 0;
+                    if (this.y < 0) this.y = height; if (this.y > height) this.y = 0;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(232, 245, 233, ${this.alpha})`;
+                    ctx.fill();
+                }
+            }
+
+            function initStars() {
+                stars = [];
+                const count = window.innerWidth < 768 ? 60 : 120;
+                for (let i = 0; i < count; i++) stars.push(new Star());
+            }
+
+            window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+            window.addEventListener('mouseout', () => { mouse.x = -1000; mouse.y = -1000; hoveredNode = null; });
+            window.addEventListener('click', () => {
+                if (hoveredNode && hoveredNode.el) {
+                    hoveredNode.el.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+
+                // Draw background stars
+                stars.forEach(star => {
+                    star.update();
+                    star.draw();
+                });
+
+                // Connect nodes to each other to form the main constellation
+                ctx.beginPath();
+                ctx.strokeStyle = 'rgba(159, 168, 218, 0.15)';
+                ctx.lineWidth = 1;
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                    }
+                }
+                ctx.stroke();
+
+                // Draw and update interactive nodes
+                hoveredNode = null;
+                document.body.style.cursor = 'default';
+
+                nodes.forEach(node => {
+                    const dx = mouse.x - node.x;
+                    const dy = mouse.y - node.y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    
+                    if (dist < 40) {
+                        hoveredNode = node;
+                        document.body.style.cursor = 'pointer';
+                        node.glow += (1 - node.glow) * 0.2; // animate glow up
+                    } else {
+                        node.glow += (0 - node.glow) * 0.1; // animate glow down
+                    }
+
+                    // Draw Node connection to mouse if close
+                    if (dist < 150 && !prefersReducedMotion) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(247, 231, 178, ${0.4 * (1 - dist/150)})`;
+                        ctx.moveTo(node.x, node.y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.stroke();
+                    }
+
+                    // Node Core
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.radius + (node.glow * 3), 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(247, 231, 178, ${0.8 + node.glow * 0.2})`;
+                    ctx.shadowBlur = 15 + (node.glow * 15);
+                    ctx.shadowColor = '#F7E7B2';
+                    ctx.fill();
+                    ctx.shadowBlur = 0; // reset
+
+                    // Node Label
+                    if (node.glow > 0.05) {
+                        ctx.font = 'bold 10px "Space Grotesk", sans-serif';
+                        ctx.fillStyle = `rgba(247, 231, 178, ${node.glow})`;
+                        ctx.fillText(node.label, node.x + 15, node.y + 4);
+                    }
+                });
+                
+                requestAnimationFrame(draw);
+            }
+
+            resize();
+            initStars();
+            window.addEventListener('resize', () => { resize(); initStars(); });
+            draw();
+        }
+
+        // Initialize Everything
+        window.addEventListener('DOMContentLoaded', () => {
+            initConfigData();
+            initUI();
+            initParallax();
+            initGallery();
+            initInteractiveDoodles();
+            initConstellationCanvas();
+        });
+    </script>
+</body>
+</html>

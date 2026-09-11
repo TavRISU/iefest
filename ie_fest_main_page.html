@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>IE-FEST | Incsada English Festival</title>
+    <meta name="description" content="Incsada English Festival - Where Every Voice Becomes a Star.">
+    
+    <!-- Google Fonts: Space Grotesk for display headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#18205C',
+                        amethyst: '#9966CC',
+                        periwinkle: '#9FA8DA',
+                        vanilla: '#F7E7B2',
+                        honeydew: '#E8F5E9',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="antialiased relative selection:bg-periwinkle selection:text-deep">
+
+    <!-- Interactive Constellation Canvas Background -->
+    <canvas id="constellation-canvas" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-auto"></canvas>
+    
+    <!-- Atmospheric Nebulas -->
+    <div class="nebula-1"></div>
+    <div class="nebula-2"></div>
+
+    <!-- Floating Celestial Doodles (assets/img/decorations/) -->
+    <img src="https://placehold.co/80x80/transparent/F7E7B2?text=★" alt="Star Doodle" class="floating-doodle animate-float top-[15%] left-[5%] w-12 h-12 md:w-16 md:h-16" onerror="this.style.display='none'">
+    <img src="https://placehold.co/90x90/transparent/9FA8DA?text=✦" alt="Sparkle Doodle" class="floating-doodle animate-float-rev top-[35%] right-[8%] w-14 h-14 md:w-20 md:h-20" onerror="this.style.display='none'">
+    <img src="https://placehold.co/70x70/transparent/9966CC?text=✧" alt="Celestial Doodle" class="floating-doodle animate-float top-[65%] left-[7%] w-10 h-10 md:w-14 md:h-14" onerror="this.style.display='none'">
+    <img src="https://placehold.co/85x85/transparent/F7E7B2?text=✨" alt="Constellation Node Doodle" class="floating-doodle animate-float-rev top-[85%] right-[10%] w-12 h-12 md:w-18 md:h-18" onerror="this.style.display='none'">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-3 sm:py-4 glass-nav" style="padding-top: max(0.75rem, env(safe-area-inset-top));">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <!-- Logo Area -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <span class="text-vanilla text-2xl group-hover:rotate-180 transition-transform duration-500 inline-block">✦</span>
+                <span class="font-display font-bold text-lg sm:text-xl tracking-wider text-honeydew group-hover:text-vanilla transition-colors" data-config="name">IE-FEST</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-7 text-xs lg:text-sm font-medium tracking-wide">
+                <a href="#home" class="text-honeydew hover:text-vanilla transition-all hover:text-glow">HOME</a>
+                <a href="#about" class="text-honeydew hover:text-vanilla transition-all hover:text-glow">ABOUT</a>
+                <a href="#competitions" class="text-honeydew hover:text-vanilla transition-all hover:text-glow">COMPETITIONS</a>
+                <a href="#registration" class="text-vanilla hover:text-white transition-all hover:text-glow font-semibold">REGISTRATION</a>
+                <a href="#guidebook" class="text-honeydew hover:text-vanilla transition-all hover:text-glow">GUIDE BOOK</a>
+                <a href="#gallery" class="text-honeydew hover:text-vanilla transition-all hover:text-glow">GALLERY</a>
+                <a href="#submission" class="text-honeydew hover:text-vanilla transition-all hover:text-glow">SUBMISSION</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-honeydew hover:text-vanilla focus:outline-none p-2 rounded-lg active:bg-white/10 transition-colors" aria-label="Toggle Menu">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card absolute top-full left-0 w-full flex flex-col p-4 space-y-1 shadow-2xl border-t-0 max-h-[85vh] overflow-y-auto">
+            <a href="#home" class="text-honeydew hover:text-vanilla active:bg-white/10 block px-4 py-3 rounded-lg text-sm sm:text-base font-medium">HOME</a>
+            <a href="#about" class="text-honeydew hover:text-vanilla active:bg-white/10 block px-4 py-3 rounded-lg text-sm sm:text-base font-medium">ABOUT</a>
+            <a href="#competitions" class="text-honeydew hover:text-vanilla active:bg-white/10 block px-4 py-3 rounded-lg text-sm sm:text-base font-medium">COMPETITIONS</a>
+            <a href="#registration" class="text-vanilla active:bg-white/10 block px-4 py-3 rounded-lg font-bold text-sm sm:text-base">REGISTRATION</a>
+            <a href="#guidebook" class="text-honeydew hover:text-vanilla active:bg-white/10 block px-4 py-3 rounded-lg text-sm sm:text-base font-medium">GUIDE BOOK</a>
+            <a href="#gallery" class="text-honeydew hover:text-vanilla active:bg-white/10 block px-4 py-3 rounded-lg text-sm sm:text-base font-medium">GALLERY</a>
+            <a href="#submission" class="text-honeydew hover:text-vanilla active:bg-white/10 block px-4 py-3 rounded-lg text-sm sm:text-base font-medium">SUBMISSION</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 overflow-hidden">
+        <div class="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center">
+            <span class="inline-block py-1.5 px-4 rounded-full border border-periwinkle/40 bg-periwinkle/10 text-periwinkle text-xs sm:text-sm font-medium tracking-widest mb-6 animate-float shadow-[0_0_15px_rgba(159,168,218,0.2)]">
+                ✨ <span data-config="tagline">Where Every Voice Becomes a Star.</span>
+            </span>
+            
+            <h1 class="font-display text-[clamp(2.5rem,11vw,6rem)] leading-[1.08] font-bold mb-4 heading-glow tracking-tight">
+                <span class="text-honeydew" data-config="name">IE-FEST</span>
+            </h1>
+            <p class="text-[clamp(1.1rem,3.5vw,1.5rem)] text-periwinkle font-light mb-6 tracking-wide px-2" data-config="fullName">
+                Incsada English Festival
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-honeydew/90 mb-10 glass-card py-3 px-5 sm:px-8 rounded-2xl w-full max-w-lg mx-auto">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-vanilla shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span data-config="date">YOUR_EVENT_DATE</span>
+                </div>
+                <span class="hidden sm:inline text-amethyst">•</span>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-vanilla shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <span data-config="location">YOUR_EVENT_LOCATION</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md mx-auto">
+                <a href="#registration" class="btn-primary py-4 px-8 rounded-full font-semibold tracking-wider flex items-center justify-center gap-2.5 w-full">
+                    <span>REGISTER NOW</span> ✦
+                </a>
+                <a href="#guidebook" class="btn-secondary py-4 px-8 rounded-full font-semibold tracking-wider flex items-center justify-center gap-2.5 w-full">
+                    <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    VIEW GUIDE BOOK
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 sm:py-24 relative px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="font-display text-[clamp(2rem,5vw,2.5rem)] font-bold text-honeydew mb-4 leading-tight">Discover the Constellation</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-periwinkle to-transparent mx-auto"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="glass-card p-6 sm:p-8 rounded-3xl relative overflow-hidden">
+                    <div class="absolute -right-6 -top-6 text-8xl text-white opacity-5 pointer-events-none">✦</div>
+                    <h3 class="text-2xl font-display text-vanilla mb-4">About IE-FEST</h3>
+                    <p class="text-honeydew/80 leading-relaxed mb-4 text-sm sm:text-base">
+                        Incsada English Festival (IE-FEST) is a premier English competition and festival designed to connect bright minds, celebrate creativity, and foster a strong community. Like a constellation connecting distant stars, IE-FEST brings together participants, mentors, and language enthusiasts.
+                    </p>
+                    <p class="text-honeydew/80 leading-relaxed text-sm sm:text-base">
+                        Whether you are sharing a story, spelling complex words, or delivering a powerful speech, your voice is a unique star in our vibrant universe. Join us and let your brilliance shine.
+                    </p>
+                </div>
+
+                <!-- History Timeline -->
+                <div class="relative py-4 pl-6 sm:pl-8">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="space-y-10 sm:space-y-12">
+                        <div class="timeline-node md:flex md:justify-end md:pr-12 relative w-full">
+                            <div class="glass-card p-5 sm:p-6 rounded-2xl w-full md:w-5/12 ml-4 sm:ml-6 md:ml-0">
+                                <span class="text-vanilla font-bold text-xs sm:text-sm tracking-widest block mb-1">YEAR XXXX</span>
+                                <h4 class="text-base sm:text-lg font-display text-honeydew mb-2">First Light</h4>
+                                <p class="text-xs sm:text-sm text-honeydew/70">The first edition of IE-FEST was established, creating a new platform for English enthusiasts.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-node md:flex md:justify-start md:pl-12 relative w-full">
+                            <div class="glass-card p-5 sm:p-6 rounded-2xl w-full md:w-5/12 ml-4 sm:ml-6 md:ml-0">
+                                <span class="text-vanilla font-bold text-xs sm:text-sm tracking-widest block mb-1">YEAR XXXX</span>
+                                <h4 class="text-base sm:text-lg font-display text-honeydew mb-2">Expanding the Universe</h4>
+                                <p class="text-xs sm:text-sm text-honeydew/70">Introduction of new competition categories, welcoming participants from across the region.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-node md:flex md:justify-end md:pr-12 relative w-full">
+                            <div class="glass-card p-5 sm:p-6 rounded-2xl w-full md:w-5/12 ml-4 sm:ml-6 md:ml-0">
+                                <span class="text-vanilla font-bold text-xs sm:text-sm tracking-widest block mb-1" data-config="date">YOUR_EVENT_DATE</span>
+                                <h4 class="text-base sm:text-lg font-display text-honeydew mb-2 border-b border-vanilla/30 pb-2 inline-block">The Current Constellation</h4>
+                                <p class="text-xs sm:text-sm text-honeydew/70 mt-2">The most spectacular IE-FEST yet, waiting for your star to join.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitions Section -->
+    <section id="competitions" class="py-16 sm:py-24 relative bg-black/20 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="text-vanilla text-xs sm:text-sm tracking-widest font-semibold block mb-2 uppercase">Your Stage Awaits</span>
+                <h2 class="font-display text-[clamp(2rem,5vw,2.5rem)] font-bold text-honeydew mb-4 leading-tight">The Competitions</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-amethyst to-transparent mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Comp Card 1 -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl group flex flex-col h-full">
+                    <div class="text-3xl text-periwinkle mb-4 group-hover:text-vanilla transition-colors group-hover:animate-pulse-glow">✦</div>
+                    <div class="inline-block py-1 px-3 rounded-md bg-white/5 text-xs text-honeydew/70 mb-3 w-max">SD CATEGORY</div>
+                    <h3 class="text-xl sm:text-2xl font-display font-bold text-honeydew mb-3">Olympiad</h3>
+                    <p class="text-honeydew/70 text-sm mb-6 flex-grow">Test your fundamental English knowledge in a comprehensive academic challenge designed for elementary students.</p>
+                    <a href="#guidebook" class="text-vanilla text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        View Details <span>→</span>
+                    </a>
+                </div>
+
+                <!-- Comp Card 2 -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl group flex flex-col h-full">
+                    <div class="text-3xl text-periwinkle mb-4 group-hover:text-vanilla transition-colors group-hover:animate-pulse-glow">✧</div>
+                    <div class="inline-block py-1 px-3 rounded-md bg-white/5 text-xs text-honeydew/70 mb-3 w-max">SMP CATEGORY</div>
+                    <h3 class="text-xl sm:text-2xl font-display font-bold text-honeydew mb-3">Olympiad</h3>
+                    <p class="text-honeydew/70 text-sm mb-6 flex-grow">A rigorous academic competition challenging junior high students on grammar, vocabulary, and reading comprehension.</p>
+                    <a href="#guidebook" class="text-vanilla text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        View Details <span>→</span>
+                    </a>
+                </div>
+
+                <!-- Comp Card 3 -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl group flex flex-col h-full">
+                    <div class="text-3xl text-periwinkle mb-4 group-hover:text-vanilla transition-colors group-hover:animate-pulse-glow">🌟</div>
+                    <div class="inline-block py-1 px-3 rounded-md bg-white/5 text-xs text-honeydew/70 mb-3 w-max">SD CATEGORY</div>
+                    <h3 class="text-xl sm:text-2xl font-display font-bold text-honeydew mb-3">Storytelling</h3>
+                    <p class="text-honeydew/70 text-sm mb-6 flex-grow">Bring tales to life! Showcase your pronunciation, expression, and creativity through captivating storytelling.</p>
+                    <a href="#guidebook" class="text-vanilla text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        View Details <span>→</span>
+                    </a>
+                </div>
+
+                <!-- Comp Card 4 -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl group flex flex-col h-full">
+                    <div class="text-3xl text-periwinkle mb-4 group-hover:text-vanilla transition-colors group-hover:animate-pulse-glow">✨</div>
+                    <div class="inline-block py-1 px-3 rounded-md bg-white/5 text-xs text-honeydew/70 mb-3 w-max">SMP CATEGORY</div>
+                    <h3 class="text-xl sm:text-2xl font-display font-bold text-honeydew mb-3">Storytelling</h3>
+                    <p class="text-honeydew/70 text-sm mb-6 flex-grow">Engage the audience with advanced narrative skills, acting, and flawless English delivery.</p>
+                    <a href="#guidebook" class="text-vanilla text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        View Details <span>→</span>
+                    </a>
+                </div>
+
+                <!-- Comp Card 5 -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl group flex flex-col h-full">
+                    <div class="text-3xl text-periwinkle mb-4 group-hover:text-vanilla transition-colors group-hover:animate-pulse-glow">🎙️</div>
+                    <div class="inline-block py-1 px-3 rounded-md bg-white/5 text-xs text-honeydew/70 mb-3 w-max">SMP CATEGORY</div>
+                    <h3 class="text-xl sm:text-2xl font-display font-bold text-honeydew mb-3">Speech</h3>
+                    <p class="text-honeydew/70 text-sm mb-6 flex-grow">Articulate your thoughts, persuade your audience, and demonstrate mastery of public speaking.</p>
+                    <a href="#guidebook" class="text-vanilla text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        View Details <span>→</span>
+                    </a>
+                </div>
+
+                <!-- Comp Card 6 -->
+                <div class="glass-card p-6 sm:p-8 rounded-3xl group flex flex-col h-full">
+                    <div class="text-3xl text-periwinkle mb-4 group-hover:text-vanilla transition-colors group-hover:animate-pulse-glow">🐝</div>
+                    <div class="inline-block py-1 px-3 rounded-md bg-white/5 text-xs text-honeydew/70 mb-3 w-max">SMP CATEGORY</div>
+                    <h3 class="text-xl sm:text-2xl font-display font-bold text-honeydew mb-3">Spelling Bee</h3>
+                    <p class="text-honeydew/70 text-sm mb-6 flex-grow">Spell your way to victory in this fast-paced test of vocabulary and phonetic understanding.</p>
+                    <a href="#guidebook" class="text-vanilla text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                        View Details <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registration" class="py-16 sm:py-24 relative px-4 sm:px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 md:p-14 border-t border-t-vanilla/40 shadow-[0_0_60px_rgba(247,231,178,0.12)]">
+                <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+                    <div class="text-center md:text-left">
+                        <h2 class="font-display text-[clamp(2rem,6vw,3rem)] leading-tight font-bold text-honeydew mb-4">JOIN THE <br class="hidden sm:block"><span class="text-vanilla text-glow">CONSTELLATION</span></h2>
+                        <p class="text-honeydew/80 text-sm sm:text-base mb-8">
+                            Ready to shine? Register now for your chosen competitions. Connect with other bright minds and make your mark at IE-FEST.
+                        </p>
+                        
+                        <ul class="space-y-3 mb-8 text-honeydew/90 text-sm sm:text-base text-left mx-auto max-w-sm md:mx-0">
+                            <li class="flex items-start gap-3"><span class="text-periwinkle shrink-0 mt-0.5">✦</span> <span>Choose your category (SD/SMP)</span></li>
+                            <li class="flex items-start gap-3"><span class="text-periwinkle shrink-0 mt-0.5">✦</span> <span>Ensure you have read the Guide Book</span></li>
+                            <li class="flex items-start gap-3"><span class="text-periwinkle shrink-0 mt-0.5">✦</span> <span>Complete the registration form</span></li>
+                        </ul>
+
+                        <a href="#" id="btn-register-link" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex py-4 px-8 rounded-2xl font-bold tracking-wider items-center justify-center gap-2.5 w-full shadow-lg">
+                            REGISTER VIA FORM <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                    </div>
+                    
+                    <div class="flex flex-col items-center justify-center bg-black/30 p-6 sm:p-8 rounded-2xl border border-white/10 w-full max-w-xs mx-auto">
+                        <p class="text-xs sm:text-sm text-honeydew/70 uppercase tracking-widest mb-4 font-semibold text-center">Scan to Register</p>
+                        <div class="bg-white p-3 rounded-2xl shadow-xl relative group w-full aspect-square">
+                            <img src="assets/img/qr/registration.png" alt="Registration QR Code" class="w-full h-full object-cover rounded-lg" onerror="this.src='https://placehold.co/250x250/18205C/F7E7B2?text=QR+Code'">
+                        </div>
+                        <p class="text-xs text-honeydew/60 mt-4 text-center px-2">
+                            Scan using your mobile device to open the form directly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Book Section -->
+    <section id="guidebook" class="py-16 sm:py-24 relative bg-black/20 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="text-periwinkle text-xs sm:text-sm tracking-widest font-semibold block mb-2 uppercase">Know Your Journey</span>
+                <h2 class="font-display text-[clamp(2rem,5vw,2.5rem)] font-bold text-honeydew mb-4 leading-tight">Your Map Through the Constellation</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-honeydew to-transparent mx-auto"></div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 sm:p-10 max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+                <div class="w-full md:w-1/3 flex justify-center shrink-0">
+                    <div class="w-28 h-36 sm:w-32 sm:h-40 bg-gradient-to-br from-periwinkle/20 to-amethyst/20 rounded-2xl border border-periwinkle/30 flex items-center justify-center relative animate-float shadow-[0_0_20px_rgba(153,102,204,0.3)]">
+                        <div class="absolute inset-x-0 top-0 h-4 bg-periwinkle/30 rounded-t-2xl"></div>
+                        <svg class="w-16 h-16 text-vanilla" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-2/3">
+                    <h3 class="text-2xl font-display text-honeydew mb-3">Official Guide Book</h3>
+                    <p class="text-honeydew/80 mb-8 text-sm sm:text-base leading-relaxed">
+                        The Guide Book contains essential information regarding competition rules, schedules, scoring criteria, and technical requirements. Please read it thoroughly before registering.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start w-full">
+                        <a href="#" id="btn-guide-view" target="_blank" rel="noopener noreferrer" class="btn-primary py-3.5 px-6 rounded-2xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 w-full sm:w-auto">
+                            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            VIEW GUIDE BOOK
+                        </a>
+                        <a href="#" id="btn-guide-download" download class="btn-secondary py-3.5 px-6 rounded-2xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 w-full sm:w-auto">
+                            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            DOWNLOAD PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 sm:py-24 relative px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="font-display text-[clamp(2rem,5vw,2.5rem)] font-bold text-honeydew mb-4 leading-tight">Starlight Gallery</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-vanilla to-transparent mx-auto mb-8"></div>
+                
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-2 mb-10" id="gallery-filters">
+                    <button class="filter-btn active bg-white/20 text-white shadow-lg px-4 py-2 rounded-xl text-xs sm:text-sm transition-all border border-white/20" data-filter="all">ALL</button>
+                    <button class="filter-btn bg-white/5 text-honeydew/70 hover:text-white px-4 py-2 rounded-xl text-xs sm:text-sm transition-all border border-white/10" data-filter="event">EVENT</button>
+                    <button class="filter-btn bg-white/5 text-honeydew/70 hover:text-white px-4 py-2 rounded-xl text-xs sm:text-sm transition-all border border-white/10" data-filter="competition">COMPETITIONS</button>
+                    <button class="filter-btn bg-white/5 text-honeydew/70 hover:text-white px-4 py-2 rounded-xl text-xs sm:text-sm transition-all border border-white/10" data-filter="committee">COMMITTEE</button>
+                    <button class="filter-btn bg-white/5 text-honeydew/70 hover:text-white px-4 py-2 rounded-xl text-xs sm:text-sm transition-all border border-white/10" data-filter="venue">VENUE</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="gallery-grid">
+                <div class="gallery-item aspect-square overflow-hidden rounded-2xl cursor-pointer relative group glass-card p-1" data-category="event">
+                    <img src="assets/img/gallery/event-1.jpg" alt="IE-FEST Event Crowd" class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover:scale-110" loading="lazy" onerror="this.src='https://placehold.co/600x600/18205C/E8F5E9?text=Event+Moments'">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl backdrop-blur-xs">
+                        <span class="text-vanilla font-medium tracking-wide text-sm">View Image</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item aspect-square overflow-hidden rounded-2xl cursor-pointer relative group glass-card p-1" data-category="competition">
+                    <img src="assets/img/gallery/competition-1.jpg" alt="Speech Competition" class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover:scale-110" loading="lazy" onerror="this.src='https://placehold.co/600x600/18205C/E8F5E9?text=Speech+Competition'">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl backdrop-blur-xs">
+                        <span class="text-vanilla font-medium tracking-wide text-sm">View Image</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item aspect-square overflow-hidden rounded-2xl cursor-pointer relative group glass-card p-1" data-category="competition">
+                    <img src="assets/img/gallery/competition-2.jpg" alt="Olympiad Exam" class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover:scale-110" loading="lazy" onerror="this.src='https://placehold.co/600x600/18205C/E8F5E9?text=Olympiad'">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl backdrop-blur-xs">
+                        <span class="text-vanilla font-medium tracking-wide text-sm">View Image</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item aspect-square overflow-hidden rounded-2xl cursor-pointer relative group glass-card p-1" data-category="committee">
+                    <img src="assets/img/gallery/committee-1.jpg" alt="Committee Members" class="w-full h-full object-cover rounded-xl transition-transform duration-700 group-hover:scale-110" loading="lazy" onerror="this.src='https://placehold.co/600x600/18205C/E8F5E9?text=Committee'">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl backdrop-blur-xs">
+                        <span class="text-vanilla font-medium tracking-wide text-sm">View Image</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-center text-honeydew/50 text-xs sm:text-sm mt-8">More photos will be uploaded during and after the event.</p>
+        </div>
+    </section>
+
+    <!-- Submission Section -->
+    <section id="submission" class="py-16 sm:py-24 relative bg-black/20 px-4 sm:px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12 sm:mb-16">
+                <span class="text-periwinkle text-xs sm:text-sm tracking-widest font-semibold block mb-2 uppercase">Showcase Your Talent</span>
+                <h2 class="font-display text-[clamp(2rem,5vw,2.5rem)] font-bold text-honeydew mb-4 leading-tight">Let Your Work Shine</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-vanilla to-transparent mx-auto"></div>
+                <p class="text-honeydew/70 mt-6 max-w-2xl mx-auto text-xs sm:text-base leading-relaxed">
+                    For online categories or pre-event requirements, please submit your files to the dedicated Google Drive folders below. Ensure your files are named correctly.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="glass-card p-6 sm:p-8 rounded-3xl flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-white/10 transition-colors border border-white/10 shrink-0">
+                        <svg class="w-8 h-8 text-periwinkle group-hover:text-vanilla transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-display text-honeydew mb-2">Speech Submission</h3>
+                    <p class="text-xs sm:text-sm text-honeydew/60 mb-6 flex-grow">
+                        Upload your recorded speech video or manuscript here as per guide book requirements.
+                    </p>
+                    <a href="#" id="btn-submit-speech" target="_blank" rel="noopener noreferrer" class="btn-secondary py-3.5 px-6 rounded-2xl text-xs sm:text-sm font-semibold w-full flex justify-center items-center">
+                        SUBMIT SPEECH
+                    </a>
+                </div>
+
+                <div class="glass-card p-6 sm:p-8 rounded-3xl flex flex-col items-center text-center group">
+                    <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-white/10 transition-colors border border-white/10 shrink-0">
+                        <svg class="w-8 h-8 text-periwinkle group-hover:text-vanilla transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-display text-honeydew mb-2">Storytelling Submission</h3>
+                    <p class="text-xs sm:text-sm text-honeydew/60 mb-6 flex-grow">
+                        Upload your storytelling video performance or required documents here.
+                    </p>
+                    <a href="#" id="btn-submit-story" target="_blank" rel="noopener noreferrer" class="btn-secondary py-3.5 px-6 rounded-2xl text-xs sm:text-sm font-semibold w-full flex justify-center items-center">
+                        SUBMIT STORYTELLING
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-deep border-t border-white/10 pt-12 sm:pt-16 pb-8 relative z-10 px-4 sm:px-6" style="padding-bottom: max(2rem, env(safe-area-inset-bottom));">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <h2 class="font-display text-xl sm:text-2xl font-bold text-honeydew mb-2 tracking-wide" data-config="name">IE-FEST</h2>
+                    <p class="text-vanilla text-xs sm:text-sm mb-4" data-config="fullName">Incsada English Festival</p>
+                    <p class="text-honeydew/60 text-xs sm:text-sm max-w-sm mb-6 leading-relaxed">
+                        "Different voices. One constellation."<br>
+                        Connecting talents and celebrating English proficiency in a spectacular cosmic event.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" id="link-ig" target="_blank" rel="noopener noreferrer" class="text-honeydew/60 hover:text-vanilla transition-colors p-2 bg-white/5 rounded-xl border border-white/10" aria-label="Instagram">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                        <a href="#" id="link-yt" target="_blank" rel="noopener noreferrer" class="text-honeydew/60 hover:text-vanilla transition-colors p-2 bg-white/5 rounded-xl border border-white/10" aria-label="YouTube">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-honeydew font-semibold mb-4 tracking-wider text-xs sm:text-sm">EXPLORE</h3>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-honeydew/60">
+                        <li><a href="#home" class="hover:text-vanilla transition-colors block py-0.5">Home</a></li>
+                        <li><a href="#about" class="hover:text-vanilla transition-colors block py-0.5">About IE-FEST</a></li>
+                        <li><a href="#competitions" class="hover:text-vanilla transition-colors block py-0.5">Competitions</a></li>
+                        <li><a href="#gallery" class="hover:text-vanilla transition-colors block py-0.5">Gallery</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-honeydew font-semibold mb-4 tracking-wider text-xs sm:text-sm">CONTACT & LOCATION</h3>
+                    <ul class="space-y-2 text-xs sm:text-sm text-honeydew/60">
+                        <li class="flex items-start gap-2"><svg class="w-4 h-4 shrink-0 mt-0.5 text-periwinkle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> <span data-config="location">YOUR_EVENT_LOCATION</span></li>
+                        <li class="mt-3 text-honeydew font-medium">Organizer:</li>
+                        <li>YOUR_ORGANIZER_PLACEHOLDER</li>
+                        <li class="mt-3 text-honeydew font-medium">Email:</li>
+                        <li>YOUR_CONTACT_EMAIL</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-honeydew/40 text-center sm:text-left gap-4">
+                <p>&copy; <span id="year">2026</span> <span data-config="name">IE-FEST</span>. All rights reserved.</p>
+                <p>Designed with ✦ for the Constellation Universe</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4 backdrop-blur-md transition-opacity duration-300 opacity-0">
+        <button id="lightbox-close" class="absolute top-4 right-4 md:top-6 md:right-6 p-3 text-white/70 hover:text-white focus:outline-none z-[101] bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <img id="lightbox-img" src="" alt="Enlarged Gallery Image" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl relative z-[100] border border-white/10">
+        <div id="lightbox-bg" class="absolute inset-0 z-50"></div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
